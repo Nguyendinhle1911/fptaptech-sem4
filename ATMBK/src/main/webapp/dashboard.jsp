@@ -1,140 +1,198 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
     <title>Dashboard</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body {
-            background: linear-gradient(135deg, #e0eafc, #cfdef3);
-            min-height: 100vh;
-            font-family: 'Poppins', sans-serif;
-        }
-        .container {
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            padding: 30px;
-            animation: slideUp 0.6s ease-out;
-        }
-        h2, h3 {
-            font-weight: 600;
-            color: #1a73e8;
-        }
-        .table {
-            border-radius: 10px;
-            overflow: hidden;
-        }
-        .table thead {
-            background: #1a73e8;
-            color: white;
-        }
-        .btn {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-        .form-control {
-            border-radius: 10px;
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
-        }
-        .form-control:focus {
-            border-color: #1a73e8;
-            box-shadow: 0 0 10px rgba(26, 115, 232, 0.2);
-        }
-        .card-animation {
-            animation: fadeIn 0.8s ease-in-out;
-        }
+        /* Custom animations */
         @keyframes slideUp {
             from { transform: translateY(50px); opacity: 0; }
             to { transform: translateY(0); opacity: 1; }
         }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
         }
-        .btn-success {
-            background: linear-gradient(45deg, #28a745, #34d058);
-            border: none;
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 5px rgba(79, 70, 229, 0.5); }
+            50% { box-shadow: 0 0 20px rgba(79, 70, 229, 0.8); }
+            100% { box-shadow: 0 0 5px rgba(79, 70, 229, 0.5); }
+        }
+        .animate-slide-up {
+            animation: slideUp 0.8s ease-out forwards;
+        }
+        .animate-fade-in-scale {
+            animation: fadeInScale 0.6s ease-in-out forwards;
+        }
+        .animate-pulse-glow {
+            animation: pulseGlow 2s infinite ease-in-out;
+        }
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        .hover-glow {
+            transition: box-shadow 0.3s ease;
+        }
+        .hover-glow:hover {
+            box-shadow: 0 0 15px rgba(79, 70, 229, 0.7);
         }
     </style>
 </head>
-<body>
-<div class="container mt-5">
+<body class="bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900 min-h-screen font-sans text-gray-200">
+<div class="container mx-auto mt-12 px-6">
     <c:if test="${empty sessionScope.user}">
         <c:redirect url="login.jsp"/>
     </c:if>
-
-    <h2 class="text-primary mb-4 animate__animated animate__fadeInDown">
-        <i class="fas fa-user-circle me-2"></i>Welcome, ${sessionScope.user.username}
-    </h2>
-
-    <h3 class="mt-4 animate__animated animate__fadeIn">Your Accounts</h3>
-    <div class="table-responsive card-animation">
-        <table class="table table-bordered table-striped">
-            <thead class="table-dark">
-            <tr>
-                <th>Account Number</th>
-                <th>Balance</th>
-                <th>Actions</th>
-            </tr>
-            </thead>
-            <tbody>
-            <c:forEach var="account" items="${sessionScope.accounts}">
-                <tr class="animate__animated animate__fadeInUp" style="animation-delay: ${status.index * 0.1}s;">
-                    <td>${account.accountNumber}</td>
-                    <td class="fw-bold text-success">$${account.balance}</td>
-                    <td>
-                        <a href="${pageContext.request.contextPath}/withdraw.jsp?accountId=${account.accountId}"
-                           class="btn btn-warning btn-sm me-2"><i class="fas fa-money-bill-wave"></i> Withdraw</a>
-                        <a href="${pageContext.request.contextPath}/transfer.jsp?accountId=${account.accountId}"
-                           class="btn btn-info btn-sm me-2"><i class="fas fa-exchange-alt"></i> Transfer</a>
-                        <a href="${pageContext.request.contextPath}/history?accountId=${account.accountId}"
-                           class="btn btn-secondary btn-sm me-2"><i class="fas fa-history"></i> History</a>
-                        <form action="${pageContext.request.contextPath}/accountManagement" method="post" class="d-inline">
-                            <input type="hidden" name="action" value="delete">
-                            <input type="hidden" name="accountId" value="${account.accountId}">
-                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?');">
-                                <i class="fas fa-trash"></i> Delete
-                            </button>
-                        </form>
-                    </td>
-                </tr>
-            </c:forEach>
-            </tbody>
-        </table>
+    <!-- Header -->
+    <div class="bg-white bg-opacity-10 backdrop-blur-lg rounded-3xl shadow-2xl p-8 mb-10 animate-slide-up border border-indigo-500/20 relative">
+        <h2 class="text-4xl font-extrabold text-white flex items-center justify-between tracking-tight">
+            <div class="flex items-center">
+                <i class="fas fa-user-circle mr-4 text-indigo-400 animate-pulse"></i>Welcome, <span class="text-indigo-300 ml-2">${sessionScope.user.username}</span>
+            </div>
+            <i class="fas fa-check-circle text-green-400 text-5xl" title="Login successful"></i>
+        </h2>
+        <!-- Chỉ thay đổi phần form logout trong Header -->
+        <p class="text-indigo-200 mt-3 flex items-center text-lg">
+            <i class="fas fa-clock mr-3 text-indigo-400"></i>Token expires at:
+            <span class="font-medium text-white ml-2 bg-indigo-700/30 px-3 py-1 rounded-full">
+            <fmt:formatDate value="${sessionScope.tokenExpiration}" pattern="dd/MM/yyyy HH:mm:ss"/>
+        </span>
+        </p>
+        <form action="${pageContext.request.contextPath}/logout" method="post" class="inline">
+            <button type="submit" class="bg-gradient-to-r from-red-500 to-red-600 text-white px-4 py-2 rounded-xl hover-lift hover-glow flex items-center">
+                <i class="fas fa-sign-out-alt mr-2"></i>Logout
+            </button>
+        </form>
     </div>
 
-    <h3 class="mt-4 animate__animated animate__fadeIn">Add New Account</h3>
-    <form action="${pageContext.request.contextPath}/accountManagement" method="post" class="mt-3 card-animation">
-        <input type="hidden" name="action" value="create">
-        <input type="hidden" name="userId" value="${sessionScope.user.userId}">
-
-        <div class="mb-3">
-            <label class="form-label fw-bold">Account Number</label>
-            <input type="text" name="accountNumber" class="form-control" placeholder="Enter your Account Number" required>
+    <!-- Accounts Table -->
+    <div class="bg-white bg-opacity-10 backdrop-blur-lg rounded-3xl shadow-2xl p-8 mb-10 animate-fade-in-scale border border-indigo-500/20">
+        <h3 class="text-3xl font-semibold text-white mb-6 tracking-wide">Your Accounts</h3>
+        <div class="overflow-x-auto">
+            <table class="w-full text-left border-separate border-spacing-0">
+                <thead class="bg-indigo-800 text-white">
+                <tr>
+                    <th class="p-5 rounded-tl-2xl font-bold text-lg">Account Number</th>
+                    <th class="p-5 font-bold text-lg">Balance</th>
+                    <th class="p-5 rounded-tr-2xl font-bold text-lg">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <c:forEach var="account" items="${sessionScope.accounts}" varStatus="loop">
+                    <tr class="hover:bg-indigo-700/20 transition-colors duration-300 animate-fade-in-scale" style="animation-delay: ${loop.index * 0.1}s;">
+                        <td class="p-5 border-b border-indigo-500/20 text-white">${account.accountNumber}</td>
+                        <td class="p-5 border-b border-indigo-500/20 font-bold text-green-400">$${account.balance}</td>
+                        <td class="p-5 border-b border-indigo-500/20 flex gap-3">
+                            <a href="${pageContext.request.contextPath}/withdraw.jsp?accountId=${account.accountId}"
+                               class="bg-gradient-to-r from-yellow-500 to-yellow-600 text-white px-4 py-2 rounded-xl hover-lift hover-glow flex items-center">
+                                <i class="fas fa-money-bill-wave mr-2"></i>Withdraw
+                            </a>
+                            <a href="${pageContext.request.contextPath}/transfer.jsp?accountId=${account.accountId}"
+                               class="bg-gradient-to-r from-blue-500 to-blue-600 text-white px-4 py-2 rounded-xl hover-lift hover-glow flex items-center">
+                                <i class="fas fa-exchange-alt mr-2"></i>Transfer
+                            </a>
+                            <a href="${pageContext.request.contextPath}/history?accountId=${account.accountId}"
+                               class="bg-gradient-to-r from-gray-500 to-gray-600 text-white px-4 py-2 rounded-xl hover-lift hover-glow flex items-center">
+                                <i class="fas fa-history mr-2"></i>History
+                            </a>
+                            <form action="${pageContext.request.contextPath}/accountManagement" method="post" class="inline">
+                                <input type="hidden" name="action" value="delete">
+                                <input type="hidden" name="accountId" value="${account.accountId}">
+                                <button type="submit" class="bg-gradient-to-r from-red-500 to-red-600 text-white px-4 py-2 rounded-xl hover-lift hover-glow flex items-center"
+                                        onclick="return confirm('Are you sure?');">
+                                    <i class="fas fa-trash mr-2"></i>Delete
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
         </div>
+    </div>
 
-        <div class="mb-3">
-            <label class="form-label fw-bold">Initial Balance</label>
-            <input type="number" name="balance" class="form-control" step="0.01" placeholder="Enter your Balance" required>
-        </div>
+    <!-- Add New Account Form -->
+    <div class="bg-white bg-opacity-10 backdrop-blur-lg rounded-3xl shadow-2xl p-8 animate-fade-in-scale border border-indigo-500/20">
+        <h3 class="text-3xl font-semibold text-white mb-6 tracking-wide">Add New Account</h3>
+        <form action="${pageContext.request.contextPath}/accountManagement" method="post" class="space-y-6">
+            <input type="hidden" name="action" value="create">
+            <input type="hidden" name="userId" value="${sessionScope.user.userId}">
 
-        <button type="submit" class="btn btn-success"><i class="fas fa-plus-circle me-2"></i>Add Account</button>
-    </form>
+            <div class="relative">
+                <label class="block text-indigo-200 font-bold mb-2 text-lg">Account Number</label>
+                <input type="text" name="accountNumber" class="w-full p-4 rounded-xl bg-white/5 border border-indigo-500/50 text-white placeholder-indigo-300 focus:border-indigo-400 focus:ring-4 focus:ring-indigo-400/30 transition-all duration-300 hover:bg-white/10" placeholder="Enter your Account Number" required>
+                <i class="fas fa-id-card absolute right-4 top-16 text-indigo-400"></i>
+            </div>
+
+            <div class="relative">
+                <label class="block text-indigo-200 font-bold mb-2 text-lg">Initial Balance</label>
+                <input type="number" name="balance" step="0.01" class="w-full p-4 rounded-xl bg-white/5 border border-indigo-500/50 text-white placeholder-indigo-300 focus:border-indigo-400 focus:ring-4 focus:ring-indigo-400/30 transition-all duration-300 hover:bg-white/10" placeholder="Enter your Balance" required>
+            </div>
+
+            <button type="submit" class="bg-gradient-to-r from-green-500 to-emerald-600 text-white px-6 py-3 rounded-xl hover-lift hover-glow animate-pulse-glow flex items-center text-lg font-semibold">
+                <i class="fas fa-plus-circle mr-3"></i>Add Account
+            </button>
+        </form>
+    </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.js"></script>
+<!-- Giữ nguyên toàn bộ HTML và CSS trước đó, chỉ thay thế phần script ở cuối -->
 <script>
-    document.querySelectorAll('.btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            this.classList.add('animate__animated', 'animate__pulse');
-            setTimeout(() => this.classList.remove('animate__animated', 'animate__pulse'), 500);
+    // Hiệu ứng nhấn nút và hover mượt mà hơn
+    document.querySelectorAll('button, a').forEach(element => {
+        // Hiệu ứng khi nhấn
+        element.addEventListener('mousedown', function() {
+            this.style.transition = 'transform 0.15s ease-in-out, opacity 0.15s ease-in-out';
+            this.style.transform = 'scale(0.95)';
+            this.style.opacity = '0.85';
+        });
+
+        element.addEventListener('mouseup', function() {
+            this.style.transform = 'scale(1)';
+            this.style.opacity = '1';
+            // Thêm hiệu ứng bật nhẹ khi thả ra
+            this.style.transition = 'transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s ease-in-out';
+            this.style.transform = 'scale(1.02)';
+            setTimeout(() => {
+                this.style.transform = 'scale(1)';
+            }, 150);
+        });
+
+        // Hiệu ứng hover
+        element.addEventListener('mouseenter', function() {
+            if (!this.matches(':active')) { // Chỉ áp dụng khi không nhấn
+                this.style.transition = 'transform 0.25s ease-out, opacity 0.25s ease-out';
+                this.style.transform = 'scale(1.03)';
+                this.style.opacity = '0.95';
+            }
+        });
+
+        element.addEventListener('mouseleave', function() {
+            this.style.transition = 'transform 0.25s ease-in, opacity 0.25s ease-in';
+            this.style.transform = 'scale(1)';
+            this.style.opacity = '1';
+        });
+    });
+
+    // Hiệu ứng hover cho input (giữ nguyên nhưng tối ưu hơn)
+    document.querySelectorAll('input').forEach(input => {
+        input.addEventListener('focus', function() {
+            this.style.transition = 'transform 0.2s ease-out';
+            this.style.transform = 'scale(1.02)';
+        });
+        input.addEventListener('blur', function() {
+            this.style.transition = 'transform 0.2s ease-in';
+            this.style.transform = 'scale(1)';
         });
     });
 </script>

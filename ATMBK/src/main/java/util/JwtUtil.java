@@ -9,10 +9,9 @@ import java.security.Key;
 import java.util.Date;
 
 public class JwtUtil {
-    private static final Key SECRET_KEY = Keys.secretKeyFor(SignatureAlgorithm.HS512); // Khóa bí mật tự động tạo
-    private static final long EXPIRATION_TIME = 1000 * 60 * 60; // 1 giờ (đơn vị: milliseconds)
+    private static final Key SECRET_KEY = Keys.secretKeyFor(SignatureAlgorithm.HS512);
+    private static final long EXPIRATION_TIME = 1000 * 60 * 60; // 1 giờ
 
-    // Tạo JWT token
     public static String generateToken(String username) {
         return Jwts.builder()
                 .setSubject(username)
@@ -22,20 +21,17 @@ public class JwtUtil {
                 .compact();
     }
 
-    // Lấy username từ token
     public static String extractUsername(String token) {
         return getClaims(token).getSubject();
     }
 
-    // Kiểm tra token hợp lệ
     public static boolean validateToken(String token, String username) {
         String tokenUsername = extractUsername(token);
         return (tokenUsername.equals(username) && !isTokenExpired(token));
     }
 
-    // Lấy claims từ token
-    private static Claims getClaims(String token) {
-
+    // Đổi từ private sang public để truy cập từ LoginServlet
+    public static Claims getClaims(String token) {
         return Jwts.parser()
                 .setSigningKey(SECRET_KEY)
                 .build()
@@ -43,7 +39,6 @@ public class JwtUtil {
                 .getBody();
     }
 
-    // Kiểm tra token hết hạn
     private static boolean isTokenExpired(String token) {
         return getClaims(token).getExpiration().before(new Date());
     }
