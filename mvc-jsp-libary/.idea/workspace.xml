@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="cb1f9898-2f00-47f6-8269-75a52246d035" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../mvc2-jsp-libary-master/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mvc2-jsp-libary-master/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mvc2-jsp-libary-master/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mvc2-jsp-libary-master/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mvc2-jsp-libary-master/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mvc2-jsp-libary-master/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mvc2-jsp-libary-master/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mvc2-jsp-libary-master/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mvc2-jsp-libary-master/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mvc2-jsp-libary-master/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mvc2-jsp-libary-master/src/main/java/com/fptaptech/mvc2jsplibary/HelloServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mvc2-jsp-libary-master/src/main/java/com/fptaptech/mvc2jsplibary/bean/BookBean.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mvc2-jsp-libary-master/src/main/java/com/fptaptech/mvc2jsplibary/bean/LoanBean.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mvc2-jsp-libary-master/src/main/java/com/fptaptech/mvc2jsplibary/bean/MemberBean.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mvc2-jsp-libary-master/src/main/java/com/fptaptech/mvc2jsplibary/controller/AuthServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mvc2-jsp-libary-master/src/main/java/com/fptaptech/mvc2jsplibary/controller/BookServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mvc2-jsp-libary-master/src/main/java/com/fptaptech/mvc2jsplibary/controller/LoanServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mvc2-jsp-libary-master/src/main/java/com/fptaptech/mvc2jsplibary/controller/MemberServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mvc2-jsp-libary-master/src/main/java/com/fptaptech/mvc2jsplibary/dao/BookDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mvc2-jsp-libary-master/src/main/java/com/fptaptech/mvc2jsplibary/dao/LoanDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mvc2-jsp-libary-master/src/main/java/com/fptaptech/mvc2jsplibary/dao/MemberDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mvc2-jsp-libary-master/src/main/java/com/fptaptech/mvc2jsplibary/entity/Book.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mvc2-jsp-libary-master/src/main/java/com/fptaptech/mvc2jsplibary/entity/Loan.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mvc2-jsp-libary-master/src/main/java/com/fptaptech/mvc2jsplibary/entity/Member.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mvc2-jsp-libary-master/src/main/java/com/fptaptech/mvc2jsplibary/filter/AdminFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mvc2-jsp-libary-master/src/main/java/com/fptaptech/mvc2jsplibary/filter/AuthFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mvc2-jsp-libary-master/src/main/java/com/fptaptech/mvc2jsplibary/service/LoanService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mvc2-jsp-libary-master/src/main/java/com/fptaptech/mvc2jsplibary/util/DateUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mvc2-jsp-libary-master/src/main/java/com/fptaptech/mvc2jsplibary/util/PasswordUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mvc2-jsp-libary-master/src/main/resources/META-INF/beans.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mvc2-jsp-libary-master/src/main/resources/META-INF/persistence.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mvc2-jsp-libary-master/src/main/webapp/WEB-INF/views/book/add.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mvc2-jsp-libary-master/src/main/webapp/WEB-INF/views/book/edit.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mvc2-jsp-libary-master/src/main/webapp/WEB-INF/views/book/list.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mvc2-jsp-libary-master/src/main/webapp/WEB-INF/views/loan/add.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mvc2-jsp-libary-master/src/main/webapp/WEB-INF/views/loan/edit.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mvc2-jsp-libary-master/src/main/webapp/WEB-INF/views/loan/list.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mvc2-jsp-libary-master/src/main/webapp/WEB-INF/views/login.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mvc2-jsp-libary-master/src/main/webapp/WEB-INF/views/member/add.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mvc2-jsp-libary-master/src/main/webapp/WEB-INF/views/member/edit.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mvc2-jsp-libary-master/src/main/webapp/WEB-INF/views/member/list.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mvc2-jsp-libary-master/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mvc2-jsp-libary-master/src/main/webapp/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MVC2-JSP-Libary/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MVC2-JSP-Libary/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MVC2-JSP-Libary/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mvcjsplibrary/HelloServlet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mvcjsplibrary/bean/BookBean.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mvcjsplibrary/bean/LoanBean.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mvcjsplibrary/bean/USerBean.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mvcjsplibrary/controller/BookController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mvcjsplibrary/dao/BookDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mvcjsplibrary/entity/Book.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mvcjsplibrary/entity/Loan.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mvcjsplibrary/entity/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/beans.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/index.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mvc2-jpa/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mvc2-jpa/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mvc2-jpa/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mvc2-jpa/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mvc2-jpa/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mvc2-jpa/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mvc2-jpa/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mvc2-jpa/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mvc2-jpa/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mvc2-jpa/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mvc2-jpa/src/main/java/org/example/mvc2jpa/HelloServlet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mvc2-jpa/src/main/java/org/example/mvc2jpa/controller/UserController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mvc2-jpa/src/main/java/org/example/mvc2jpa/dao/UserDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mvc2-jpa/src/main/java/org/example/mvc2jpa/model/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mvc2-jpa/src/main/java/org/example/mvc2jpa/model/account.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mvc2-jpa/src/main/resources/META-INF/beans.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mvc2-jpa/src/main/resources/META-INF/persistence.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mvc2-jpa/src/main/webapp/WEB-INF/web.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mvc2-jpa/src/main/webapp/index.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mvc2-jpa/src/main/webapp/user-list.jsp" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="2thNZEDAyie5b38skEC9xJQDFpu" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Nguyen/Documents/GitHub/fptaptech-sem4/mvc2-jsp-libary-master",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="Tomcat 11.0.3" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 11.0.3" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/mvc_jsp_libary_war_exploded/" />
+      <deployment>
+        <artifact name="mvc-jsp-libary:war exploded">
+          <settings>
+            <option name="CONTEXT_PATH" value="/mvc_jsp_libary_war_exploded" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings />
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="mvc-jsp-libary:war exploded" />
+        </option>
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.17011.79" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.17011.79" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="cb1f9898-2f00-47f6-8269-75a52246d035" name="Changes" comment="" />
+      <created>1740800400651</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1740800400651</updated>
+      <workItem from="1740800401778" duration="3602000" />
+      <workItem from="1741054690857" duration="431000" />
+      <workItem from="1741055675627" duration="1145000" />
+      <workItem from="1741226965304" duration="328000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+</project>
