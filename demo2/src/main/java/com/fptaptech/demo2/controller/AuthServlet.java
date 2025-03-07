@@ -1,7 +1,7 @@
 package com.fptaptech.demo2.controller;
 
+import com.fptaptech.demo2.Service.AuthService;
 import com.fptaptech.demo2.model.User;
-import com.fptaptech.demo2.utils.JWTUtils;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
@@ -10,15 +10,7 @@ import java.io.IOException;
 
 @WebServlet(name = "AuthServlet", urlPatterns = {"/auth"})
 public class AuthServlet extends HttpServlet {
-
-    private static final User adminUser = new User("admin", "admin", "ADMIN");
-    private static final User normalUser = new User("user", "user", "USER");
-
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        request.getRequestDispatcher("login.jsp").forward(request, response);
-    }
+    private final AuthService authService = new AuthService();
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -26,29 +18,31 @@ public class AuthServlet extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
-        User matchedUser = null;
-        if (adminUser.getUsername().equals(username) && adminUser.getPassword().equals(password)) {
-            matchedUser = adminUser;
-        } else if (normalUser.getUsername().equals(username) && normalUser.getPassword().equals(password)) {
-            matchedUser = normalUser;
-        }
+        // ✅ Sử dụng User thay vì Optional<String>
+        User user = authService.login(username, password);
 
-        if (matchedUser != null) {
-            // Tạo JWT file
-            String token = JWTUtils.generateToken(matchedUser.getUsername(), matchedUser.getRole());
-            // Lưu token vào cookie
-            Cookie jwtCookie = new Cookie("jwt_token", token);
+        if (user != null) {
+            // ✅ Lưu session
+            HttpSession session = request.getSession();
+            session.setAttribute("username", user.getUsername());
+            session.setAttribute("role", user.getRole());
+            session.setAttribute("userId", user.getId());
+
+            // ✅ Set cookie JWT nếu cần
+            Cookie jwtCookie = new Cookie("jwt_token", authService.generateJWT(user));
             jwtCookie.setMaxAge(10 * 60); // 10 phút
             jwtCookie.setPath("/");
             response.addCookie(jwtCookie);
 
-            if ("ADMIN".equals(matchedUser.getRole())) {
+            // ✅ Điều hướng dựa trên ROLE, không phải username
+            if ("ADMIN".equals(user.getRole())) {
                 response.sendRedirect(request.getContextPath() + "/admin.jsp");
             } else {
-                response.sendRedirect(request.getContextPath() + "/user.jsp");
+                response.sendRedirect(request.getContextPath() + "/books.jsp");
             }
         } else {
-            request.setAttribute("error", "Invalid credentials!");
+            // ❌ Đăng nhập thất bại
+            request.setAttribute("error", "Sai tên đăng nhập hoặc mật khẩu!");
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }
     }

@@ -44,7 +44,7 @@ public class JwtFilter implements Filter {
             } catch (Exception e) {
             }
         }
-        httpRes.sendRedirect(httpReq.getContextPath() + "/login.jsp");
+        httpRes.sendRedirect(httpReq.getContextPath() + "/auth");
     }
 
     @Override
