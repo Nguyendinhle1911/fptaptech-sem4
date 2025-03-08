@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ page import="java.util.List, com.fptaptech.demo2.model.Book, com.fptaptech.demo2.model.Transaction" %>
 <%@ page import="com.fptaptech.demo2.Service.BookService, com.fptaptech.demo2.Service.TransactionService" %>
 <%@ page import="jakarta.servlet.http.HttpSession" %>
@@ -18,19 +20,20 @@
 
     List<Book> books = bookService.getAllBooks();
     List<Transaction> transactions = transactionService.getUserTransactions(userId);
-    String message = (String) request.getAttribute("message");
+    request.setAttribute("books", books);
+    request.setAttribute("transactions", transactions);
 %>
 
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>📚 Thư Viện Sách </title>
+    <title>📚 Library System</title>
 
-    <!-- ✅ Thêm Bootstrap -->
+    <!-- ✅ Add Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- ✅ Thêm FontAwesome -->
+    <!-- ✅ Add FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
@@ -65,101 +68,123 @@
 
 <div class="container mt-4">
     <div class="d-flex justify-content-between align-items-center mb-3">
-        <h2 class="text-primary">📚 Thư Viện Sách</h2>
-        <p>Xin chào, <strong><%= username %></strong> | <a href="logout" class="btn btn-danger">Đăng xuất</a></p>
+        <h2 class="text-primary">📚 Library System</h2>
+        <p>Welcome, <strong><c:out value="${username}" /></strong> | <a href="logout" class="btn btn-danger">Logout</a></p>
+        <script>
+            localStorage.removeItem("jwt_token"); // Xóa JWT khỏi Local Storage
+        </script>
     </div>
 
-    <% if (message != null) { %>
-    <div class="alert <%= message.contains("thất bại") ? "alert-danger" : "alert-success" %>">
-        <%= message %>
-    </div>
-    <% } %>
+    <c:if test="${not empty message}">
+        <div class="alert ${fn:contains(message, 'failed') ? 'alert-danger' : 'alert-success'}">
+            <c:out value="${message}" />
+        </div>
+    </c:if>
 
-    <h3 class="text-dark">📖 Danh Sách Sách</h3>
+    <h3 class="text-dark">📖 Book List</h3>
     <table class="table table-bordered table-hover">
         <thead class="table-dark">
         <tr>
-            <th>Tên sách</th>
-            <th>Tác giả</th>
-            <th>Số lượng</th>
-            <th>Trạng thái</th>
-            <th>Hành động</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Quantity</th>
+            <th>Status</th>
+            <th>Action</th>
         </tr>
         </thead>
         <tbody>
-        <% for (Book book : books) { %>
-        <tr>
-            <td><%= book.getTitle() %></td>
-            <td><%= book.getAuthor() %></td>
-            <td><%= book.getQuantity() %></td>
-            <td>
-                    <span class="badge <%= "AVAILABLE".equals(book.getStatus()) ? "bg-success" : "bg-danger" %>">
-                        <%= book.getStatus().equals("AVAILABLE") ? "Còn sách" : "Hết sách" %>
+        <c:forEach var="book" items="${books}">
+            <tr>
+                <td><c:out value="${book.title}" /></td>
+                <td><c:out value="${book.author}" /></td>
+                <td><c:out value="${book.quantity}" /></td>
+                <td>
+                    <span class="badge ${book.status eq 'AVAILABLE' ? 'bg-success' : 'bg-danger'}">
+                        <c:out value="${book.status eq 'AVAILABLE' ? 'Available' : 'Out of stock'}" />
                     </span>
-            </td>
-            <td>
-                <% if ("AVAILABLE".equals(book.getStatus())) { %>
-                <form action="borrow" method="post">
-                    <input type="hidden" name="userId" value="<%= userId %>">
-                    <input type="hidden" name="bookId" value="<%= book.getId() %>">
-                    <button type="submit" class="btn btn-primary"><i class="fas fa-book"></i> Mượn</button>
-                </form>
-                <% } else { %>
-                <span class="text-danger">❌ Hết sách</span>
-                <% } %>
-            </td>
-        </tr>
-        <% } %>
+                </td>
+                <td>
+                    <c:choose>
+                        <c:when test="${book.status eq 'AVAILABLE'}">
+                            <form action="borrow" method="post">
+                                <input type="hidden" name="userId" value="${userId}">
+                                <input type="hidden" name="bookId" value="${book.id}">
+                                <button type="submit" class="btn btn-primary"><i class="fas fa-book"></i> Borrow</button>
+                            </form>
+                        </c:when>
+                        <c:otherwise>
+                            <span class="text-danger">❌ Out of stock</span>
+                        </c:otherwise>
+                    </c:choose>
+                </td>
+            </tr>
+        </c:forEach>
         </tbody>
     </table>
 
-    <h3 class="text-dark">📜 Lịch Sử Mượn/Trả của tôi </h3>
-    <% if (transactions.isEmpty()) { %>
-    <div class="alert alert-warning">⚠️ Bạn chưa mượn sách nào.</div>
-    <% } else { %>
-    <table class="table table-striped">
-        <thead class="table-dark">
-        <tr>
-            <th>Tên sách</th>
-            <th>Ngày mượn</th>
-            <th>Hạn trả</th>
-            <th>Ngày trả</th>
-            <th>Trạng thái</th>
-            <th>Hành động</th>
-        </tr>
-        </thead>
-        <tbody>
-        <% for (Transaction t : transactions) { %>
-        <tr>
-            <td><%= t.getBookTitle() %></td>
-            <td><%= t.getBorrowDate() != null ? t.getBorrowDate() : "Chưa có" %></td>
-            <td><%= t.getDueDate() != null ? t.getDueDate() : "Chưa có" %></td>
-            <td><%= t.getReturnDate() != null ? t.getReturnDate() : "Chưa trả" %></td>
-            <td>
-                    <span class="badge <%= "BORROWED".equals(t.getStatus()) ? "bg-warning" : "bg-success" %>">
-                        <%= "BORROWED".equals(t.getStatus()) ? "Đang mượn" : "Đã trả" %>
-                    </span>
-            </td>
-            <td>
-                <% if ("BORROWED".equals(t.getStatus())) { %>
-                <form action="return" method="post">
-                    <input type="hidden" name="transactionId" value="<%= t.getId() %>">
-                    <input type="hidden" name="bookId" value="<%= t.getBookId() %>">
-                    <button type="submit" class="btn btn-success"><i class="fas fa-undo"></i> Trả sách</button>
-                </form>
-                <% } else { %>
-                <span class="text-success">✅ Đã trả</span>
-                <% } %>
-            </td>
-        </tr>
-        <% } %>
-        </tbody>
-    </table>
-    <% } %>
+    <h3 class="text-dark" style="
+    margin-top: 60px;
+    font-weight: bold;
+    font-size: 22px;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+">
+        📜 My Borrowing/Return History
+    </h3>
 
+    <c:choose>
+        <c:when test="${empty transactions}">
+            <div class="alert alert-warning">⚠️ You have not borrowed any books.</div>
+        </c:when>
+        <c:otherwise>
+            <table class="table table-striped">
+                <thead class="table-dark">
+                <tr>
+                    <th>Book Title</th>
+                    <th>Borrow Date</th>
+                    <th>Due Date</th>
+                    <th>Return Date</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <c:forEach var="t" items="${transactions}">
+                    <tr>
+                        <td><c:out value="${t.bookTitle}" /></td>
+                        <td><c:out value="${t.borrowDate != null ? t.borrowDate : 'N/A'}" /></td>
+                        <td><c:out value="${t.dueDate != null ? t.dueDate : 'N/A'}" /></td>
+                        <td><c:out value="${t.returnDate != null ? t.returnDate : 'Not returned'}" /></td>
+                        <td>
+                            <span class="badge ${t.status eq 'BORROWED' ? 'bg-warning' : 'bg-success'}">
+                                <c:out value="${t.status eq 'BORROWED' ? 'Borrowed' : 'Returned'}" />
+                            </span>
+                        </td>
+                        <td>
+                            <c:choose>
+                                <c:when test="${t.status eq 'BORROWED'}">
+                                    <form action="return" method="post">
+                                        <input type="hidden" name="transactionId" value="${t.id}">
+                                        <input type="hidden" name="bookId" value="${t.bookId}">
+                                        <button type="submit" class="btn btn-success"><i class="fas fa-undo"></i> Return</button>
+                                    </form>
+                                </c:when>
+                                <c:otherwise>
+                                    <span class="text-success">✅ Returned</span>
+                                </c:otherwise>
+                            </c:choose>
+                        </td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
+        </c:otherwise>
+    </c:choose>
 </div>
 
-<!-- ✅ Thêm Bootstrap JS -->
+<!-- ✅ Add Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>

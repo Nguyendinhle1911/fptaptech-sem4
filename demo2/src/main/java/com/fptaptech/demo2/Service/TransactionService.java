@@ -19,15 +19,15 @@ public class TransactionService {
                 .orElse(null);
 
         if (book == null || book.getQuantity() <= 0) {
-            return Optional.of("Sách không khả dụng hoặc đã hết.");
+            return Optional.of("Book is unavailable or out of stock.");
         }
 
         boolean success = transactionDAO.borrowBook(userId, bookId);
         if (success) {
             bookDAO.updateBookQuantity(bookId, book.getQuantity() - 1);
-            return Optional.of("Mượn sách thành công! Hạn trả: 14 ngày sau.");
+            return Optional.of("Book borrowed successfully! Due date: 14 days later.");
         }
-        return Optional.of("Mượn sách thất bại.");
+        return Optional.of("Failed to borrow book.");
     }
 
     public Optional<String> returnBook(int transactionId, int bookId) {
@@ -40,12 +40,16 @@ public class TransactionService {
             if (book != null) {
                 bookDAO.updateBookQuantity(bookId, book.getQuantity() + 1);
             }
-            return Optional.of("Trả sách thành công!");
+            return Optional.of("Returned book successfully!");
         }
-        return Optional.of("Trả sách thất bại.");
+        return Optional.of("Return book failed.");
     }
 
     public List<Transaction> getUserTransactions(int userId) {
         return transactionDAO.getUserTransactions(userId);
     }
+    public boolean deleteTransaction(int transactionId) {
+        return transactionDAO.deleteTransaction(transactionId);
+    }
+
 }

@@ -88,4 +88,20 @@ public class TransactionDAO {
         }
         return transactions;
     }
+
+
+
+    public boolean deleteTransaction(int transactionId) {
+        String query = "DELETE FROM transactions WHERE id = ?";
+
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setInt(1, transactionId);
+            return stmt.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
 }

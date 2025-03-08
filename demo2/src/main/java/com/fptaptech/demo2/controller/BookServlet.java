@@ -111,7 +111,7 @@ public class BookServlet extends HttpServlet {
         boolean success = bookService.deleteBook(id);
 
         if (success) {
-            response.sendRedirect("books");
+            response.sendRedirect("admin.jsp");
         } else {
             request.setAttribute("message", "Xóa sách thất bại!");
             listBooks(request, response);

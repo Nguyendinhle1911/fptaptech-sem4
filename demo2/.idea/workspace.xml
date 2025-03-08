@@ -10,31 +10,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3b1f1cfa-f80b-46ee-b129-d0ba6c5837d3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace (2).xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../demo1/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../demo1/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../demo1/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../demo1/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../demo1/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../demo1/.idea/webContexts.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../demo1/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../demo1/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../demo1/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../demo1/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../demo1/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../demo1/src/main/java/com/fptaptech/demo2/HelloApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../demo1/src/main/java/com/fptaptech/demo2/HelloResource.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../demo1/src/main/java/com/fptaptech/demo2/controller/AuthServlet.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../demo1/src/main/java/com/fptaptech/demo2/filter/JwtFilter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../demo1/src/main/java/com/fptaptech/demo2/model/User.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../demo1/src/main/java/com/fptaptech/demo2/utils/JWTUtils.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../demo1/src/main/resources/META-INF/beans.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../demo1/src/main/resources/META-INF/persistence.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../demo1/src/main/resources/webapp/admin.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../demo1/src/main/resources/webapp/index.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../demo1/src/main/resources/webapp/login.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../demo1/src/main/resources/webapp/user.jsp" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/fptaptech/demo2/controller/DeleteTransactionServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/fptaptech/demo2/utils/HibernateUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fptaptech/demo2/DAO/TransactionDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fptaptech/demo2/DAO/TransactionDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fptaptech/demo2/Service/TransactionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fptaptech/demo2/Service/TransactionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fptaptech/demo2/controller/BookServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fptaptech/demo2/controller/BookServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fptaptech/demo2/controller/LogoutServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fptaptech/demo2/controller/LogoutServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/books.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/books.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/editBook.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/editBook.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/login.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,8 +34,8 @@
       <list>
         <option value="Kotlin Class" />
         <option value="HTML File" />
-        <option value="Class" />
         <option value="Jsp File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -82,27 +70,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "DefaultHtmlFileTemplate": "HTML File",
-    "JUnit.All in demo2.executor": "Debug",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Tomcat Server.Tomcat 11.0.2.executor": "Run",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Nguyen/Documents/GitHub/fptaptech-sem4/demo-libary",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;JUnit.All in demo2.executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Tomcat Server.Tomcat 11.0.2.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Nguyen/Documents/GitHub/fptaptech-sem4/demo-libary&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources" />
@@ -240,6 +228,8 @@
       <workItem from="1741277743961" duration="6076000" />
       <workItem from="1741324684677" duration="2768000" />
       <workItem from="1741328609025" duration="6681000" />
+      <workItem from="1741335350015" duration="530000" />
+      <workItem from="1741395439948" duration="9192000" />
     </task>
     <servers />
   </component>
