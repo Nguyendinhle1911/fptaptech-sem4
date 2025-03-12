@@ -10,19 +10,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3b1f1cfa-f80b-46ee-b129-d0ba6c5837d3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fptaptech/demo2/controller/DeleteTransactionServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fptaptech/demo2/utils/HibernateUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myApp/.gitattributes" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myApp/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myApp/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myApp/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myApp/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myApp/gradlew" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myApp/gradlew.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myApp/settings.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myApp/src/main/java/org/example/myapp/MyAppApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myApp/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myApp/src/test/java/org/example/myapp/MyAppApplicationTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myshop/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myshop/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myshop/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myshop/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myshop/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myshop/.idea/myshop.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myshop/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myshop/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myshop/myshop/.gitattributes" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myshop/myshop/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myshop/myshop/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myshop/myshop/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myshop/myshop/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myshop/myshop/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myshop/myshop/src/main/java/com/example/myshop/MyshopApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myshop/myshop/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../myshop/myshop/src/test/java/com/example/myshop/MyshopApplicationTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fptaptech/demo2/DAO/TransactionDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fptaptech/demo2/DAO/TransactionDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fptaptech/demo2/Service/TransactionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fptaptech/demo2/Service/TransactionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fptaptech/demo2/controller/BookServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fptaptech/demo2/controller/BookServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fptaptech/demo2/controller/LogoutServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fptaptech/demo2/controller/LogoutServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/books.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/books.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/editBook.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/editBook.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/login.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +98,7 @@
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Nguyen/Documents/GitHub/fptaptech-sem4/demo-libary&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Nguyen/Documents/GitHub/fptaptech-sem4/myshop&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -230,6 +246,7 @@
       <workItem from="1741328609025" duration="6681000" />
       <workItem from="1741335350015" duration="530000" />
       <workItem from="1741395439948" duration="9192000" />
+      <workItem from="1741659686192" duration="545000" />
     </task>
     <servers />
   </component>
