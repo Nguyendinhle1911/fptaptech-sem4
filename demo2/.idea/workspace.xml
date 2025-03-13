@@ -10,9 +10,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3b1f1cfa-f80b-46ee-b129-d0ba6c5837d3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../myshop/baithi/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../myshop/baithi/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../myshop/baithi/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../baithi/src/main/java/controller/ListPlayerServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../baithi/src/main/java/controller/PlayerServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../baithi/src/main/java/controller/UpdatePlayerServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../baithi/src/main/java/dao/IndexerDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../baithi/src/main/java/dao/PlayerIndexDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../baithi/src/main/java/model/PlayerIndex.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../baithi/src/main/webapp/add-player.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../baithi/src/main/webapp/delete-player.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../baithi/src/main/webapp/edit-player.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../baithi/src/main/webapp/list-player.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../baithi/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../baithi/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../baithi/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../baithi/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../baithi/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../baithi/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../baithi/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../baithi/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../baithi/src/main/java/controller/AddPlayerServlet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../baithi/src/main/java/controller/DeletePlayerServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../baithi/src/main/java/controller/DeletePlayerServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../baithi/src/main/java/controller/EditPlayerServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../baithi/src/main/java/controller/EditPlayerServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../baithi/src/main/java/controller/ListPlayersServlet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../baithi/src/main/java/dao/DatabaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/../baithi/src/main/java/dao/DatabaseConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../baithi/src/main/java/dao/PlayerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../baithi/src/main/java/dao/PlayerDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../baithi/src/main/java/model/Indexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../baithi/src/main/java/model/Indexer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../baithi/src/main/java/model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/../baithi/src/main/java/model/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../baithi/src/main/webapp/addPlayer.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../baithi/src/main/webapp/editPlayer.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../baithi/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../baithi/src/main/webapp/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../baithi/src/main/webapp/listPlayers.jsp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -61,27 +84,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;JUnit.All in demo2.executor&quot;: &quot;Debug&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Tomcat Server.Tomcat 11.0.2.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Nguyen/Documents/GitHub/fptaptech-sem4/myshop&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "JUnit.All in demo2.executor": "Debug",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Tomcat Server.Tomcat 11.0.2.executor": "Run",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Nguyen/Documents/GitHub/fptaptech-sem4/baithi",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources" />
@@ -224,6 +247,11 @@
       <workItem from="1741659686192" duration="545000" />
       <workItem from="1741832649152" duration="367000" />
       <workItem from="1741833045094" duration="320000" />
+      <workItem from="1741834902430" duration="73000" />
+      <workItem from="1741836725313" duration="235000" />
+      <workItem from="1741837490116" duration="787000" />
+      <workItem from="1741839715063" duration="59000" />
+      <workItem from="1741839792676" duration="733000" />
     </task>
     <servers />
   </component>

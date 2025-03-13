@@ -5,19 +5,18 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DatabaseConnection {
-    private static Connection connection = null;
+    private static final String URL = "jdbc:mysql://localhost:3306/player_evaluation";
+    private static final String USER = "root"; // Thay bằng user MySQL của bạn
+    private static final String PASSWORD = ""; // Thay bằng password của bạn
 
     public static Connection getConnection() {
-        if (connection == null) {
-            try {
-                Class.forName("com.mysql.cj.jdbc.Driver");
-                connection = DriverManager.getConnection(
-                        "jdbc:mysql://localhost:3306/player_evaluation", "root", ""
-                );
-            } catch (ClassNotFoundException | SQLException e) {
-                e.printStackTrace();
-            }
+        Connection conn = null;
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            conn = DriverManager.getConnection(URL, USER, PASSWORD);
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
         }
-        return connection;
+        return conn;
     }
 }

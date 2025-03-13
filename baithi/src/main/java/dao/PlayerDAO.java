@@ -1,40 +1,29 @@
 package dao;
 
 import model.Player;
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class PlayerDAO {
-    public void addPlayer(Player player) {
-        String sql = "INSERT INTO player (name, full_name, age, index_id) VALUES (?, ?, ?, ?)";
-        try (Connection conn = DatabaseConnection.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(1, player.getName());
-            pstmt.setString(2, player.getFullName());
-            pstmt.setString(3, player.getAge());
-            pstmt.setInt(4, player.getIndexId());
-            pstmt.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
 
-    public List<Player> getAllPlayers() {
+    // Lấy tất cả cầu thủ
+    public static List<Player> getAllPlayers() {
         List<Player> players = new ArrayList<>();
-        String sql = "SELECT * FROM player";
+        String query = "SELECT * FROM player";
+
         try (Connection conn = DatabaseConnection.getConnection();
              Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(sql)) {
+             ResultSet rs = stmt.executeQuery(query)) {
+
             while (rs.next()) {
-                Player player = new Player();
-                player.setPlayerId(rs.getInt("player_id"));
-                player.setName(rs.getString("name"));
-                player.setFullName(rs.getString("full_name"));
-                player.setAge(rs.getString("age"));
-                player.setIndexId(rs.getInt("index_id"));
-                players.add(player);
+                players.add(new Player(
+                        rs.getInt("player_id"),
+                        rs.getString("name"),
+                        rs.getString("full_name"),
+                        rs.getInt("age"),
+                        rs.getInt("index_id")
+                ));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -42,49 +31,82 @@ public class PlayerDAO {
         return players;
     }
 
-    public void updatePlayer(Player player) {
-        String sql = "UPDATE player SET name = ?, full_name = ?, age = ?, index_id = ? WHERE player_id = ?";
+    // Thêm cầu thủ mới
+    public static boolean addPlayer(Player player) {
+        String query = "INSERT INTO player (name, full_name, age, index_id) VALUES (?, ?, ?, ?)";
+
         try (Connection conn = DatabaseConnection.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(1, player.getName());
-            pstmt.setString(2, player.getFullName());
-            pstmt.setString(3, player.getAge());
-            pstmt.setInt(4, player.getIndexId());
-            pstmt.setInt(5, player.getPlayerId());
-            pstmt.executeUpdate();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setString(1, player.getName());
+            stmt.setString(2, player.getFullName());
+            stmt.setInt(3, player.getAge());
+            stmt.setInt(4, player.getIndexId());
+
+            return stmt.executeUpdate() > 0; // Trả về true nếu thành công
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
 
-    public void deletePlayer(int playerId) {
-        String sql = "DELETE FROM player WHERE player_id = ?";
+    // Cập nhật cầu thủ
+    public static boolean updatePlayer(Player player) {
+        String query = "UPDATE player SET name = ?, full_name = ?, age = ?, index_id = ? WHERE player_id = ?";
+
         try (Connection conn = DatabaseConnection.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setInt(1, playerId);
-            pstmt.executeUpdate();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setString(1, player.getName());
+            stmt.setString(2, player.getFullName());
+            stmt.setInt(3, player.getAge());
+            stmt.setInt(4, player.getIndexId());
+            stmt.setInt(5, player.getPlayerId());
+
+            return stmt.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
 
-    public Player getPlayerById(int playerId) {
-        Player player = new Player();
-        String sql = "SELECT * FROM player WHERE player_id = ?";
+    // Xóa cầu thủ
+    public static boolean deletePlayer(int playerId) {
+        String query = "DELETE FROM player WHERE player_id = ?";
+
         try (Connection conn = DatabaseConnection.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setInt(1, playerId);
-            ResultSet rs = pstmt.executeQuery();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setInt(1, playerId);
+            return stmt.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    public static Player getPlayerById(int playerId) {
+        String query = "SELECT * FROM player WHERE player_id = ?";
+        Player player = null;
+
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setInt(1, playerId);
+            ResultSet rs = stmt.executeQuery();
+
             if (rs.next()) {
-                player.setPlayerId(rs.getInt("player_id"));
-                player.setName(rs.getString("name"));
-                player.setFullName(rs.getString("full_name"));
-                player.setAge(rs.getString("age"));
-                player.setIndexId(rs.getInt("index_id"));
+                player = new Player(
+                        rs.getInt("player_id"),
+                        rs.getString("name"),
+                        rs.getString("full_name"),
+                        rs.getInt("age"),
+                        rs.getInt("index_id")
+                );
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return player;
     }
+
 }
