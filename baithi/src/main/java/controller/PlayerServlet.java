@@ -1,51 +1,60 @@
 package controller;
 
-import dao.PlayerDAO;
+import entity.Player;
+import entity.Player.PlayerIndex;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import model.Player;
-
 import java.io.IOException;
+import java.util.List;
 
-@WebServlet("/addPlayer")
+@WebServlet(name = "PlayerServlet", urlPatterns = {"/player"})
 public class PlayerServlet extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Xử lý UTF-8 để tránh lỗi tiếng Việt
-        request.setCharacterEncoding("UTF-8");
-        response.setCharacterEncoding("UTF-8");
+    private Player playerModel;
 
-        try {
-            // Lấy dữ liệu từ form
-            String name = request.getParameter("name");
-            String fullName = request.getParameter("fullName");
-            String ageStr = request.getParameter("age");
-            String indexIdStr = request.getParameter("indexId");
-
-            // Kiểm tra dữ liệu đầu vào
-            if (name == null || fullName == null || ageStr == null || indexIdStr == null ||
-                    name.trim().isEmpty() || fullName.trim().isEmpty()) {
-                response.sendRedirect("index.jsp?error=Thiếu dữ liệu nhập vào");
-                return;
-            }
-
-            int age = Integer.parseInt(ageStr);
-            int indexId = Integer.parseInt(indexIdStr);
-
-            // Tạo đối tượng Player
-            Player player = new Player(0, name, fullName, age, indexId);
-            boolean success = PlayerDAO.addPlayer(player);
-
-            // Kiểm tra thành công hay không
-            if (success) {
-                response.sendRedirect("index.jsp?success=Thêm cầu thủ thành công");
-            } else {
-                response.sendRedirect("index.jsp?error=Lỗi khi thêm cầu thủ");
-            }
-        } catch (NumberFormatException e) {
-            response.sendRedirect("index.jsp?error=Dữ liệu không hợp lệ");
-        }
+    @Override
+    public void init() throws ServletException {
+        playerModel = new Player();
     }
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        // Fetch all player-index data
+        List<PlayerIndex> playerIndices = playerModel.getAll();
+        request.setAttribute("playerIndices", playerIndices);
+
+        // Forward to JSP
+        request.getRequestDispatcher("player.jsp").forward(request, response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        // Lấy dữ liệu từ form
+        String name = request.getParameter("name");
+        String fullName = request.getParameter("fullName");
+        int age = Integer.parseInt(request.getParameter("age"));
+        int indexId = Integer.parseInt(request.getParameter("indexId"));
+        float value = Float.parseFloat(request.getParameter("value"));
+
+        // Thêm Player và PlayerIndex vào database
+        boolean isSuccess = playerModel.addPlayer(name, fullName, age, indexId, value);
+
+        // Chuyển hướng về trang chính sau khi thêm
+        if (isSuccess) {
+            request.setAttribute("message", "Player and value added successfully!");
+        } else {
+            request.setAttribute("message", "Failed to add player and value.");
+        }
+
+        // Fetch lại dữ liệu và hiển thị
+        List<PlayerIndex> playerIndices = playerModel.getAll();
+        request.setAttribute("playerIndices", playerIndices);
+        request.getRequestDispatcher("player.jsp").forward(request, response);
+    }
+
 }
