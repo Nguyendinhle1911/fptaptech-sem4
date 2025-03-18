@@ -20,20 +20,21 @@ public class DeleteServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // Lấy playerId từ request
-        int playerId = Integer.parseInt(request.getParameter("playerId"));
+        try {
+            int playerId = Integer.parseInt(request.getParameter("playerId").trim());
 
-        // Xóa Player
-        boolean isDeleted = playerModel.deletePlayer(playerId);
+            boolean isDeleted = playerModel.deletePlayer(playerId);
 
-        // Chuyển hướng về trang chính sau khi xóa
-        if (isDeleted) {
-            request.setAttribute("message", "Player deleted successfully!");
-        } else {
-            request.setAttribute("message", "Failed to delete player.");
+            if (isDeleted) {
+                request.getSession().setAttribute("message", "Player deleted successfully!");
+            } else {
+                request.getSession().setAttribute("message", "Failed to delete player.");
+            }
+
+            response.sendRedirect("player");
+        } catch (NumberFormatException e) {
+            request.getSession().setAttribute("message", "Invalid player ID!");
+            response.sendRedirect("player");
         }
-
-        // Chuyển hướng về trang chính
-        response.sendRedirect(request.getContextPath() + "/player");
     }
 }

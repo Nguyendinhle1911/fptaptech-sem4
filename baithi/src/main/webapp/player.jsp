@@ -104,25 +104,32 @@
 
 <!-- Form thêm Player -->
 <form action="player" method="post" class="form-container">
-    <div>
-        <label>Player name:</label>
-        <input type="text" name="name" required><br>
-        <label>Player age:</label>
-        <input type="number" name="age" required><br>
-        <label>Index name:</label>
-        <select name="indexId" required>
-            <option value="1">speed</option>
-            <option value="2">strength</option>
-            <option value="3">accuracy</option>
-        </select><br>
-        <label>Value:</label>
-        <select name="value" required>
-            <option value="90">90</option>
-            <option value="1">1</option>
-        </select>
+    <div style="display: flex; flex-wrap: wrap; width: 100%; gap: 20px;">
+        <div style="flex: 1; min-width: 250px;">
+            <label>Player name:</label>
+            <input type="text" name="name" required><br>
+            <label>Player age:</label>
+            <input type="number" name="age" required><br>
+        </div>
+        <div style="flex: 1; min-width: 250px;">
+            <label>Index name:</label>
+            <select name="indexId" required>
+                <option value="1">speed</option>
+                <option value="2">strength</option>
+                <option value="3">accuracy</option>
+            </select><br>
+            <label>Value:</label>
+            <select name="value" required>
+                <option value="90">90</option>
+                <option value="1">1</option>
+            </select>
+        </div>
     </div>
-    <button type="submit">Add</button>
+    <div style="display: flex; justify-content: flex-end; margin-top: 10px;">
+        <button type="submit">Add</button>
+    </div>
 </form>
+
 
 <table>
     <thead>

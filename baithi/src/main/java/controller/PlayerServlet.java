@@ -2,7 +2,6 @@ package controller;
 
 import entity.Player;
 import entity.Player.PlayerIndex;
-
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -23,38 +22,38 @@ public class PlayerServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // Fetch all player-index data
         List<PlayerIndex> playerIndices = playerModel.getAll();
         request.setAttribute("playerIndices", playerIndices);
-
-        // Forward to JSP
         request.getRequestDispatcher("player.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // Lấy dữ liệu từ form
-        String name = request.getParameter("name");
-        String fullName = request.getParameter("fullName");
-        int age = Integer.parseInt(request.getParameter("age"));
-        int indexId = Integer.parseInt(request.getParameter("indexId"));
-        float value = Float.parseFloat(request.getParameter("value"));
+        try {
+            // Lấy dữ liệu từ form, kiểm tra tránh lỗi
+            String name = request.getParameter("name");
+            String fullName = request.getParameter("fullName");
+            int age = Integer.parseInt(request.getParameter("age").trim());
+            int indexId = Integer.parseInt(request.getParameter("indexId").trim());
+            float value = Float.parseFloat(request.getParameter("value").trim());
 
-        // Thêm Player và PlayerIndex vào database
-        boolean isSuccess = playerModel.addPlayer(name, fullName, age, indexId, value);
+            if (name == null || fullName == null || name.isEmpty() || fullName.isEmpty()) {
+                throw new IllegalArgumentException("Tên không được để trống!");
+            }
 
-        // Chuyển hướng về trang chính sau khi thêm
-        if (isSuccess) {
-            request.setAttribute("message", "Player and value added successfully!");
-        } else {
-            request.setAttribute("message", "Failed to add player and value.");
+            boolean isSuccess = playerModel.addPlayer(name, fullName, age, indexId, value);
+
+            if (isSuccess) {
+                request.getSession().setAttribute("message", "Player added successfully!");
+            } else {
+                request.getSession().setAttribute("message", "Failed to add player.");
+            }
+
+            response.sendRedirect("player");
+        } catch (NumberFormatException | IllegalArgumentException e) {
+            request.getSession().setAttribute("message", "Invalid input: " + e.getMessage());
+            response.sendRedirect("player");
         }
-
-        // Fetch lại dữ liệu và hiển thị
-        List<PlayerIndex> playerIndices = playerModel.getAll();
-        request.setAttribute("playerIndices", playerIndices);
-        request.getRequestDispatcher("player.jsp").forward(request, response);
     }
-
 }
