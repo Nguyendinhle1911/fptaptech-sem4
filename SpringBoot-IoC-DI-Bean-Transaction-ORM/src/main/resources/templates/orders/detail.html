@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Chi tiết đơn hàng</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+<div th:replace="~{layouts/header :: body}"></div>
+
+<div class="container mt-4">
+    <h2>Chi tiết đơn hàng</h2>
+
+    <!-- Thông tin đơn hàng -->
+    <div class="card mt-3">
+        <div class="card-body">
+            <h5 class="card-title">Mã đơn hàng: <span th:text="${order.id}"></span></h5>
+            <p class="card-text"><strong>Ngày đặt:</strong> <span th:text="${order.orderDate}"></span></p>
+            <p class="card-text"><strong>Khách hàng:</strong> <span th:text="${order.customer.name}"></span></p>
+            <p class="card-text"><strong>Email:</strong> <span th:text="${order.customer.email}"></span></p>
+            <p class="card-text"><strong>Số điện thoại:</strong> <span th:text="${order.customer.phoneNumber}"></span></p>
+        </div>
+    </div>
+
+    <!-- Danh sách sản phẩm trong đơn hàng -->
+    <h4 class="mt-4">Sản phẩm đã đặt:</h4>
+    <table class="table table-bordered">
+        <thead class="table-dark">
+        <tr>
+            <th>Tên sản phẩm</th>
+            <th>Số lượng</th>
+            <th>Giá</th>
+            <th>Tổng</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="item : ${order.orderItems}">
+            <td th:text="${item.product.name}"></td>
+            <td th:text="${item.quantity}"></td>
+            <td th:text="${item.price} + ' VND'"></td>
+            <td th:text="${item.quantity * item.price} + ' VND'"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <h3 class="text-end">Tổng tiền: <span th:text="${#aggregates.sum(order.orderItems.![quantity * price])} + ' VND'"></span></h3>
+
+    <div class="mt-4">
+        <a href="/orders" class="btn btn-secondary">Quay lại</a>
+        <a th:href="@{/orders/delete/{id}(id=${order.id})}" class="btn btn-danger"
+           onclick="return confirm('Bạn có chắc chắn muốn xóa đơn hàng này?');">Xóa đơn hàng</a>
+    </div>
+</div>
+
+<div th:replace="~{layouts/footer :: body}"></div>
+</body>
+</html>

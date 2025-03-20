@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Thêm sản phẩm</title>
+    <!-- Thêm Tailwind CSS từ CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Custom CSS */
+        body {
+            background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+            font-family: 'Arial', sans-serif;
+        }
+
+        .form-container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .input-field {
+            transition: all 0.3s ease-in-out;
+        }
+
+        .input-field:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
+        }
+
+        .btn-submit {
+            background: #3b82f6;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .btn-submit:hover {
+            background: #2563eb;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="flex justify-center items-center min-h-screen p-4">
+
+<div class="form-container w-full max-w-2xl p-8">
+    <!-- Header -->
+
+    <!-- Tiêu đề -->
+    <h2 class="text-2xl font-bold text-center mb-6">Thêm sản phẩm</h2>
+
+    <!-- Form thêm sản phẩm -->
+    <form th:action="@{/products}" th:object="${product}" method="post" class="space-y-6">
+        <!-- Tên sản phẩm -->
+        <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">Tên sản phẩm:</label>
+            <input type="text" th:field="*{name}" placeholder="Tên sản phẩm" required class="w-full px-4 py-2 border rounded-md input-field"/>
+        </div>
+
+        <!-- Giá sản phẩm -->
+        <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">Giá:</label>
+            <input type="number" th:field="*{price}" placeholder="Giá" required class="w-full px-4 py-2 border rounded-md input-field"/>
+        </div>
+
+        <!-- Mô tả sản phẩm -->
+        <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">Mô tả:</label>
+            <textarea th:field="*{description}" placeholder="Mô tả" class="w-full px-4 py-2 border rounded-md input-field" rows="4"></textarea>
+        </div>
+
+        <!-- Danh mục sản phẩm -->
+        <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">Danh mục:</label>
+            <select th:field="*{category.id}" class="w-full px-4 py-2 border rounded-md input-field">
+                <option value="" disabled selected>-- Chọn danh mục --</option>
+                <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"></option>
+            </select>
+        </div>
+
+        <!-- Nút lưu -->
+        <div class="text-center">
+            <button type="submit" class="btn-submit">Lưu</button>
+        </div>
+    </form>
+</div>
+
+<!-- Footer -->
+
+</body>
+</html>

@@ -5,6 +5,7 @@ import org.example.springbootiocdibeantransactionorm.repository.CategoryReposito
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CategoryService {
@@ -13,18 +14,12 @@ public class CategoryService {
     public CategoryService(CategoryRepository categoryRepository) {
         this.categoryRepository = categoryRepository;
     }
-    public List<Category> findAll() {
+
+    public List<Category> getAllCategories() {
         return categoryRepository.findAll();
     }
-    public Category findById(Long id) {
-        return categoryRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Category not found with ID: " + id));
-    }
-    public Category update(Long id, Category updatedCategory) {
-        Category existingCategory = findById(id);
-        existingCategory.setName(updatedCategory.getName());
-        existingCategory.setDescription(updatedCategory.getDescription());
-        return categoryRepository.save(existingCategory);
-    }
 
+    public Optional<Category> getCategoryById(Long id) {
+        return categoryRepository.findById(id);
+    }
 }
