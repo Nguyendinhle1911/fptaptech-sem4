@@ -1,43 +1,101 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Danh sách khách hàng</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+    <!-- Bootstrap 5 -->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+    <style>
+        /* Hiệu ứng hover cho bảng */
+        .table-hover tbody tr:hover {
+            background-color: rgba(0, 123, 255, 0.1);
+            transition: 0.3s;
+        }
+
+        /* Nút bấm bo góc */
+        .btn-custom {
+            border-radius: 20px;
+            padding: 8px 15px;
+        }
+
+        /* Hiệu ứng khi rê chuột vào nút */
+        .btn:hover {
+            transform: scale(1.05);
+            transition: 0.2s;
+        }
+    </style>
 </head>
 <body>
+
+<!-- Header -->
 <div th:replace="~{layouts/header :: body}"></div>
 
-<div class="container mt-4">
-    <h1>Danh sách khách hàng</h1>
-    <a href="/customers/new" class="btn btn-primary mb-3">Thêm khách hàng</a>
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1 class="fw-bold text-primary">📋 Danh sách khách hàng</h1>
+        <a href="/customers/new" class="btn btn-success btn-custom">➕ Thêm khách hàng</a>
+    </div>
 
-    <table class="table table-bordered">
-        <thead class="table-dark">
-        <tr>
-            <th>ID</th>
-            <th>Tên</th>
-            <th>Email</th>
-            <th>Số điện thoại</th>
-            <th>Hành động</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="customer : ${customers}">
-            <td th:text="${customer.id}"></td>
-            <td th:text="${customer.name}"></td>
-            <td th:text="${customer.email}"></td>
-            <td th:text="${customer.phoneNumber}"></td>
-            <td>
+    <!-- Ô tìm kiếm khách hàng -->
+    <div class="mb-3">
+        <input type="text" id="searchBox" class="form-control" placeholder="🔍 Tìm kiếm khách hàng..." onkeyup="searchCustomer()">
+    </div>
 
-                <a th:href="@{/customers/edit/{id}(id=${customer.id})}" class="btn btn-warning">Sửa</a>
-                <a th:href="@{/customers/delete/{id}(id=${customer.id})}" class="btn btn-danger"
-                   onclick="return confirm('Bạn có chắc chắn muốn xóa khách hàng này?');">Xóa</a>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+    <!-- Bảng hiển thị danh sách khách hàng -->
+    <div class="table-responsive">
+        <table class="table table-hover table-bordered text-center">
+            <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Tên</th>
+                <th>Email</th>
+                <th>Số điện thoại</th>
+                <th>Hành động</th>
+            </tr>
+            </thead>
+            <tbody id="customerTable">
+            <tr th:each="customer : ${customers}">
+                <td th:text="${customer.id}"></td>
+                <td th:text="${customer.name}"></td>
+                <td th:text="${customer.email}"></td>
+                <td th:text="${customer.phoneNumber}"></td>
+                <td>
+                    <a th:href="@{/customers/edit/{id}(id=${customer.id})}"
+                       class="btn btn-warning btn-custom">✏️ Sửa</a>
+                    <a th:href="@{/customers/delete/{id}(id=${customer.id})}"
+                       class="btn btn-danger btn-custom"
+                       onclick="return confirm('Bạn có chắc chắn muốn xóa khách hàng này?');">
+                        🗑️ Xóa
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 
+<!-- Footer -->
 <div th:replace="~{layouts/footer :: body}"></div>
+
+<!-- Bootstrap 5 Script -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Script tìm kiếm khách hàng -->
+<script>
+    function searchCustomer() {
+        let input = document.getElementById("searchBox").value.toLowerCase();
+        let rows = document.querySelectorAll("#customerTable tr");
+
+        rows.forEach(row => {
+            let name = row.children[1].innerText.toLowerCase();
+            row.style.display = name.includes(input) ? "" : "none";
+        });
+    }
+</script>
+
 </body>
 </html>

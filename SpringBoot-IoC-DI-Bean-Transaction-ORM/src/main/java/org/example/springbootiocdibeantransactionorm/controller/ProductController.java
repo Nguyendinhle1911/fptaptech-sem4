@@ -1,5 +1,6 @@
 package org.example.springbootiocdibeantransactionorm.controller;
 
+import lombok.AllArgsConstructor;
 import org.example.springbootiocdibeantransactionorm.entity.Product;
 import org.example.springbootiocdibeantransactionorm.service.ProductService;
 import org.example.springbootiocdibeantransactionorm.service.CategoryService;
@@ -7,93 +8,64 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.Optional;
-
 @Controller
 @RequestMapping("/products")
+@AllArgsConstructor
 public class ProductController {
     private final ProductService productService;
     private final CategoryService categoryService;
 
-    public ProductController(ProductService productService, CategoryService categoryService) {
-        this.productService = productService;
-        this.categoryService = categoryService;
-    }
-
-    // Hiển thị danh sách sản phẩm
     @GetMapping
-    public String listProducts(Model model) {
-        List<Product> products = productService.getAllProducts();
-        model.addAttribute("products", products);
+    public String list(Model model) {
+        model.addAttribute("products", productService.getAllProducts());
         return "products/list";
     }
 
-    // Xem chi tiết sản phẩm
     @GetMapping("/{id}")
-    public String viewProduct(@PathVariable Long id, Model model) {
-        Optional<Product> product = productService.getProductById(id);
-        if (product.isPresent()) {
-            model.addAttribute("product", product.get());
-            return "products/detail";
-        } else {
-            return "redirect:/products?error=ProductNotFound";
-        }
+    public String view(@PathVariable Long id, Model model) {
+        return productService.getProductById(id)
+                .map(p -> { model.addAttribute("product", p); return "products/detail"; })
+                .orElse("redirect:/products?error=NotFound");
     }
 
-    // Hiển thị form thêm sản phẩm mới
     @GetMapping("/new")
-    public String showProductForm(Model model) {
+    public String form(Model model) {
         model.addAttribute("product", new Product());
         model.addAttribute("categories", categoryService.getAllCategories());
         return "products/form";
     }
 
-    // Lưu sản phẩm mới
     @PostMapping
-    public String saveProduct(@ModelAttribute Product product) {
+    public String save(@ModelAttribute Product product) {
         productService.saveProduct(product);
-        return "redirect:/products?success=ProductCreated";
+        return "redirect:/products?success=Created";
     }
 
-    // Hiển thị form chỉnh sửa sản phẩm
     @GetMapping("/edit/{id}")
-    public String showEditForm(@PathVariable Long id, Model model) {
-        Optional<Product> product = productService.getProductById(id);
-        if (product.isPresent()) {
-            model.addAttribute("product", product.get());
+    public String edit(@PathVariable Long id, Model model) {
+        return productService.getProductById(id).map(p -> {
+            model.addAttribute("product", p);
             model.addAttribute("categories", categoryService.getAllCategories());
             return "products/edit";
-        } else {
-            return "redirect:/products?error=ProductNotFound";
-        }
+        }).orElse("redirect:/products?error=NotFound");
     }
 
-    // Cập nhật sản phẩm
     @PostMapping("/update/{id}")
-    public String updateProduct(@PathVariable Long id,
-                                @RequestParam String name,
-                                @RequestParam double price,
-                                @RequestParam String description,
-                                @RequestParam Long categoryId) {
-        Optional<Product> productOpt = productService.getProductById(id);
-        if (productOpt.isPresent()) {
-            Product product = productOpt.get();
-            product.setName(name);
-            product.setPrice(price);
-            product.setDescription(description);
-            product.setCategory(categoryService.getCategoryById(categoryId).orElseThrow());
-            productService.saveProduct(product);
-            return "redirect:/products?success=ProductUpdated";
-        } else {
-            return "redirect:/products?error=ProductNotFound";
-        }
+    public String update(@PathVariable Long id, @RequestParam String name, @RequestParam double price,
+                         @RequestParam String description, @RequestParam Long categoryId) {
+        return productService.getProductById(id).map(p -> {
+            p.setName(name);
+            p.setPrice(price);
+            p.setDescription(description);
+            p.setCategory(categoryService.getCategoryById(categoryId).orElseThrow());
+            productService.saveProduct(p);
+            return "redirect:/products?success=Updated";
+        }).orElse("redirect:/products?error=NotFound");
     }
 
-    // Xóa sản phẩm
     @GetMapping("/delete/{id}")
-    public String deleteProduct(@PathVariable Long id) {
+    public String delete(@PathVariable Long id) {
         productService.deleteProduct(id);
-        return "redirect:/products?success=ProductDeleted";
+        return "redirect:/products?success=Deleted";
     }
 }

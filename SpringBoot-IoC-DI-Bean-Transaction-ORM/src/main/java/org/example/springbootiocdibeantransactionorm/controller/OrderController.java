@@ -1,8 +1,8 @@
 package org.example.springbootiocdibeantransactionorm.controller;
 
+import lombok.AllArgsConstructor;
 import org.example.springbootiocdibeantransactionorm.entity.Order;
 import org.example.springbootiocdibeantransactionorm.entity.OrderItem;
-import org.example.springbootiocdibeantransactionorm.entity.Product;
 import org.example.springbootiocdibeantransactionorm.service.OrderService;
 import org.example.springbootiocdibeantransactionorm.service.CustomerService;
 import org.example.springbootiocdibeantransactionorm.service.ProductService;
@@ -12,83 +12,60 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 @RequestMapping("/orders")
+@AllArgsConstructor
 public class OrderController {
     private final OrderService orderService;
     private final CustomerService customerService;
     private final ProductService productService;
 
-    public OrderController(OrderService orderService, CustomerService customerService, ProductService productService) {
-        this.orderService = orderService;
-        this.customerService = customerService;
-        this.productService = productService;
-    }
-
-    // Danh sách đơn hàng
     @GetMapping
-    public String listOrders(Model model) {
-        List<Order> orders = orderService.getAllOrders();
-        model.addAttribute("orders", orders);
+    public String list(Model model) {
+        model.addAttribute("orders", orderService.getAllOrders());
         return "orders/list";
     }
 
-    // Xem chi tiết đơn hàng
     @GetMapping("/{id}")
-    public String viewOrder(@PathVariable Long id, Model model) {
-        Optional<Order> orderOpt = orderService.getOrderById(id);
-        if (orderOpt.isPresent()) {
-            model.addAttribute("order", orderOpt.get());
-            return "orders/detail";
-        } else {
-            return "redirect:/orders?error=OrderNotFound";
-        }
+    public String view(@PathVariable Long id, Model model) {
+        return orderService.getOrderById(id)
+                .map(o -> { model.addAttribute("order", o); return "orders/detail"; })
+                .orElse("redirect:/orders?error=NotFound");
     }
 
-    // Hiển thị form tạo đơn hàng
     @GetMapping("/new")
-    public String showOrderForm(Model model) {
+    public String form(Model model) {
         model.addAttribute("customers", customerService.getAllCustomers());
         model.addAttribute("products", productService.getAllProducts());
         return "orders/form";
     }
 
-    // Lưu đơn hàng mới
     @PostMapping
-    public String saveOrder(
-            @RequestParam Long customerId,
-            @RequestParam List<Long> productIds,
-            @RequestParam List<Integer> quantities) {
-
+    public String save(@RequestParam Long customerId, @RequestParam List<Long> productIds, @RequestParam List<Integer> quantities) {
         var customer = customerService.getCustomerById(customerId).orElseThrow();
         var order = new Order(customer, LocalDateTime.now());
 
         boolean hasValidProduct = false;
-
         for (int i = 0; i < productIds.size(); i++) {
             var product = productService.getProductById(productIds.get(i)).orElseThrow();
-            var quantity = quantities.get(i);
-
-            if (quantity > 0) {
-                order.getOrderItems().add(new OrderItem(order, product, quantity, product.getPrice()));
+            if (quantities.get(i) > 0) {
+                order.getOrderItems().add(new OrderItem(order, product, quantities.get(i), product.getPrice()));
                 hasValidProduct = true;
             }
         }
 
-        if (!hasValidProduct) {
-            return "redirect:/orders/new?error=NoProductSelected";
-        }
-
-        orderService.saveOrder(order);
-        return "redirect:/orders?success=OrderCreated";
+        return hasValidProduct ? saveAndRedirect(order) : "redirect:/orders/new?error=NoProductSelected";
     }
 
-    // Xóa đơn hàng
+    private String saveAndRedirect(Order order) {
+        orderService.saveOrder(order);
+        return "redirect:/orders?success=Created";
+    }
+
     @GetMapping("/delete/{id}")
-    public String deleteOrder(@PathVariable Long id) {
+    public String delete(@PathVariable Long id) {
         orderService.deleteOrder(id);
-        return "redirect:/orders?success=OrderDeleted";
+        return "redirect:/orders?success=Deleted";
     }
 }

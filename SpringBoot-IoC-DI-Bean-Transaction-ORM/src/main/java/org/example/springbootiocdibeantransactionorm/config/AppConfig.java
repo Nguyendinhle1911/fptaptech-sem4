@@ -19,7 +19,7 @@ public class AppConfig {
                 Category IT = categoryRepository.save(new Category("IT", "Các loại thiết bị cho IT"));
                 Category books = categoryRepository.save(new Category("Books", "Sách giấy in"));
 
-                productRepository.save(new Product("macbook", 12.2, "New", IT));
+                productRepository.save(new Product("macbook", 12.0, "New", IT));
                 productRepository.save(new Product("SpringBoot Book", 15.0, "Framework book", books));
             }
         };

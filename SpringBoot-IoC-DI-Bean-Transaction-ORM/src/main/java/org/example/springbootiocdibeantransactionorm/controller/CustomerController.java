@@ -1,86 +1,62 @@
 package org.example.springbootiocdibeantransactionorm.controller;
 
+import lombok.AllArgsConstructor;
 import org.example.springbootiocdibeantransactionorm.entity.Customer;
 import org.example.springbootiocdibeantransactionorm.service.CustomerService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.Optional;
-
 @Controller
 @RequestMapping("/customers")
+@AllArgsConstructor
 public class CustomerController {
-    private final CustomerService customerService;
-
-    public CustomerController(CustomerService customerService) {
-        this.customerService = customerService;
-    }
+    private final CustomerService service;
 
     @GetMapping
-    public String listCustomers(Model model) {
-        List<Customer> customers = customerService.getAllCustomers();
-        model.addAttribute("customers", customers);
+    public String list(Model model) {
+        model.addAttribute("customers", service.getAllCustomers());
         return "customers/list";
     }
 
     @GetMapping("/{id}")
-    public String viewCustomer(@PathVariable Long id, Model model) {
-        Optional<Customer> customer = customerService.getCustomerById(id);
-        if (customer.isPresent()) {
-            model.addAttribute("customer", customer.get());
-            return "customers/detail";
-        } else {
-            return "redirect:/customers?error=CustomerNotFound";
-        }
+    public String view(@PathVariable Long id, Model model) {
+        return service.getCustomerById(id)
+                .map(c -> { model.addAttribute("customer", c); return "customers/detail"; })
+                .orElse("redirect:/customers?error=NotFound");
     }
 
     @GetMapping("/new")
-    public String showCustomerForm(Model model) {
+    public String form(Model model) {
         model.addAttribute("customer", new Customer());
         return "customers/form";
     }
 
     @PostMapping
-    public String saveCustomer(@RequestParam String name, @RequestParam String email, @RequestParam String phoneNumber) {
-        Customer customer = new Customer(name, email, phoneNumber);
-        customerService.saveCustomer(customer);
-        return "redirect:/customers?success=CustomerCreated";
+    public String save(@RequestParam String name, @RequestParam String email, @RequestParam String phoneNumber) {
+        service.saveCustomer(new Customer(name, email, phoneNumber));
+        return "redirect:/customers?success=Created";
     }
 
     @GetMapping("/edit/{id}")
-    public String showEditForm(@PathVariable Long id, Model model) {
-        Optional<Customer> customer = customerService.getCustomerById(id);
-        if (customer.isPresent()) {
-            model.addAttribute("customer", customer.get());
-            return "customers/edit";
-        } else {
-            return "redirect:/customers?error=CustomerNotFound";
-        }
+    public String edit(@PathVariable Long id, Model model) {
+        return view(id, model).replace("detail", "edit");
     }
 
     @PostMapping("/update/{id}")
-    public String updateCustomer(@PathVariable Long id,
-                                 @RequestParam String name,
-                                 @RequestParam String email,
-                                 @RequestParam String phoneNumber) {
-        Optional<Customer> customerOpt = customerService.getCustomerById(id);
-        if (customerOpt.isPresent()) {
-            Customer customer = customerOpt.get();
-            customer.setName(name);
-            customer.setEmail(email);
-            customer.setPhoneNumber(phoneNumber);
-            customerService.saveCustomer(customer);
-            return "redirect:/customers?success=CustomerUpdated";
-        } else {
-            return "redirect:/customers?error=CustomerNotFound";
-        }
+    public String update(@PathVariable Long id, @RequestParam String name, @RequestParam String email, @RequestParam String phoneNumber) {
+        return service.getCustomerById(id).map(c -> {
+            c.setName(name);
+            c.setEmail(email);
+            c.setPhoneNumber(phoneNumber);
+            service.saveCustomer(c);
+            return "redirect:/customers?success=Updated";
+        }).orElse("redirect:/customers?error=NotFound");
     }
 
     @GetMapping("/delete/{id}")
-    public String deleteCustomer(@PathVariable Long id) {
-        customerService.deleteCustomer(id);
-        return "redirect:/customers?success=CustomerDeleted";
+    public String delete(@PathVariable Long id) {
+        service.deleteCustomer(id);
+        return "redirect:/customers?success=Deleted";
     }
 }

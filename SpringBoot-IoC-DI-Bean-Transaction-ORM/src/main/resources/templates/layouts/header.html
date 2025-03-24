@@ -1,21 +1,52 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Header</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Header Xịn Xò</title>
+
+    <!-- Bootstrap 5 -->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        /* Tăng khoảng cách giữa các item */
+        .navbar-nav .nav-item {
+            margin-right: 15px;
+        }
+        /* Hiệu ứng hover */
+        .nav-link:hover {
+            color: #f8d210 !important;
+            transform: scale(1.1);
+            transition: 0.3s;
+        }
+    </style>
 </head>
 <body>
-<div th:remove="all"></div>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
     <div class="container">
-        <a class="navbar-brand" href="/">Trang chủ</a>
-        <div class="collapse navbar-collapse">
-            <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link" href="/customers">Khách hàng</a></li>
-                <li class="nav-item"><a class="nav-link" href="/products">Sản phẩm</a></li>
-                <li class="nav-item"><a class="nav-link" href="/orders">Đơn hàng</a></li>
+        <a class="navbar-brand fw-bold" href="/">🔥 Trang chủ</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/customers">👤 Khách hàng</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/products">📦 Sản phẩm</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/orders">🛒 Đơn hàng</a>
+                </li>
+
+                <!-- Dropdown menu để sau này thêm tính năng -->
             </ul>
         </div>
     </div>
 </nav>
+
+<!-- Bootstrap 5 Script -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
