@@ -26,12 +26,14 @@ public class Customer {
     @Column(nullable = false)
     private String phoneNumber;
 
-    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Order> orders = new ArrayList<>();
 
+    // ✅ Constructor chỉ có name, email, phoneNumber
     public Customer(String name, String email, String phoneNumber) {
         this.name = name;
         this.email = email;
         this.phoneNumber = phoneNumber;
+        this.orders = new ArrayList<>(); // Khởi tạo danh sách orders rỗng để tránh lỗi null
     }
 }

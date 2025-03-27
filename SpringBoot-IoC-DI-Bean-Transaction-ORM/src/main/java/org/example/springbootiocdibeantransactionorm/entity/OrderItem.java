@@ -14,11 +14,11 @@ public class OrderItem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id", nullable = false)
     private Order order;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "product_id", nullable = false)
     private Product product;
 
@@ -28,6 +28,7 @@ public class OrderItem {
     @Column(nullable = false)
     private double price; // Giá tại thời điểm đặt hàng
 
+    // ✅ Constructor chỉ có order, product, quantity, price
     public OrderItem(Order order, Product product, int quantity, double price) {
         this.order = order;
         this.product = product;

@@ -109,9 +109,11 @@
         <!-- Danh mục sản phẩm -->
         <div>
             <label class="block text-sm font-medium mb-2">📂 Danh mục:</label>
-            <select th:field="*{product.category.id}" class="w-full input-field">
-                <option value="" disabled selected>-- Chọn danh mục --</option>
-                <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}" th:selected="${category.id == product.category.id}"></option>
+            <select name="categoryId" class="w-full input-field" required>
+                <option value="" disabled>-- Chọn danh mục --</option>
+                <option th:each="category : ${categories}" th:value="${category.id}"
+                        th:text="${category.name}" th:selected="${category.id == product.category.id}">
+                </option>
             </select>
         </div>
 

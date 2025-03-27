@@ -1,4 +1,5 @@
 package org.example.springbootiocdibeantransactionorm.entity;
+
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -20,11 +21,11 @@ public class Product {
 
     private String description;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id", nullable = false)
     private Category category;
 
-    // Constructor đúng chuẩn (nếu ông cần dùng tay)
+    // ✅ Constructor chỉ có name, price, description, category
     public Product(String name, double price, String description, Category category) {
         this.name = name;
         this.price = price;
