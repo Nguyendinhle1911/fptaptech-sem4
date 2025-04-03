@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+    <script src="/webjars/tailwindcss/2.2.19/dist/tailwind.min.js"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+<div class="bg-white p-8 rounded-lg shadow-md w-96">
+    <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">Đăng nhập</h2>
+
+    <form th:action="@{/login}" method="post" class="space-y-6">
+        <div th:if="${param.error}" class="text-red-500 text-sm text-center">
+            Tên đăng nhập hoặc mật khẩu không đúng!
+        </div>
+        <div th:if="${param.logout}" class="text-green-500 text-sm text-center">
+            Bạn đã đăng xuất thành công!
+        </div>
+
+        <div>
+            <label for="username" class="block text-sm font-medium text-gray-700">Tên đăng nhập</label>
+            <input type="text" id="username" name="username"
+                   class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                   required>
+        </div>
+
+        <div>
+            <label for="password" class="block text-sm font-medium text-gray-700">Mật khẩu</label>
+            <input type="password" id="password" name="password"
+                   class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                   required>
+        </div>
+
+        <div>
+            <button type="submit"
+                    class="w-full py-2 px-4 bg-indigo-600 hover:bg-indigo-700 rounded-md text-white font-medium">
+                Đăng nhập
+            </button>
+        </div>
+    </form>
+</div>
+</body>
+</html>
