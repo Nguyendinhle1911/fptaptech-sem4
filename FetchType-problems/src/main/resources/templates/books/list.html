@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books List</title>
+</head>
+<body>
+<h1>Books List</h1>
+
+<!-- Link để thêm sách mới -->
+<a href="/books/new">Add New Book</a>
+<br/><br/>
+
+<!-- Bảng hiển thị danh sách sách -->
+<table border="1" cellspacing="0" cellpadding="8">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Authors</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Lặp qua danh sách books -->
+    <tr th:each="book : ${books}">
+        <td th:text="${book.id}"></td> <!-- ID của sách -->
+        <td th:text="${book.title}"></td> <!-- Tiêu đề sách -->
+        <td th:text="${book.description}"></td> <!-- Mô tả sách -->
+        <td>
+            <!-- Hiển thị danh sách các tác giả -->
+            <span th:each="author : ${book.authors}" th:text="${author.name} + ', '"></span>
+        </td>
+        <td>
+            <!-- Các hành động chỉnh sửa và xóa sách -->
+            <a th:href="'/books/edit/' + ${book.id}">Edit</a>
+            &nbsp;|&nbsp;
+            <a th:href="'/books/delete/' + ${book.id}"
+               onclick="return confirm('Are you sure you want to delete this book?');">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

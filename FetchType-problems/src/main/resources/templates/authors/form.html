@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Author Form</title>
+</head>
+<body>
+<h1>Author Form</h1>
+<form th:action="@{/authors}" th:object="${author}" method="post">
+    <input type="hidden" th:field="*{id}"/>
+    <label>Name:</label>
+    <input type="text" th:field="*{name}"/><br/>
+    <button type="submit">Save</button>
+</form>
+</body>
+</html>
