@@ -10,26 +10,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3b1f1cfa-f80b-46ee-b129-d0ba6c5837d3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../SpringBoot-IoC-DI-Bean-Transaction-ORM/src/main/java/org/example/springbootiocdibeantransactionorm/controller/CustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SpringBoot-IoC-DI-Bean-Transaction-ORM/src/main/java/org/example/springbootiocdibeantransactionorm/controller/CustomerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SpringBoot-IoC-DI-Bean-Transaction-ORM/src/main/java/org/example/springbootiocdibeantransactionorm/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SpringBoot-IoC-DI-Bean-Transaction-ORM/src/main/java/org/example/springbootiocdibeantransactionorm/controller/OrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SpringBoot-IoC-DI-Bean-Transaction-ORM/src/main/java/org/example/springbootiocdibeantransactionorm/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SpringBoot-IoC-DI-Bean-Transaction-ORM/src/main/java/org/example/springbootiocdibeantransactionorm/controller/ProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SpringBoot-IoC-DI-Bean-Transaction-ORM/src/main/java/org/example/springbootiocdibeantransactionorm/entity/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SpringBoot-IoC-DI-Bean-Transaction-ORM/src/main/java/org/example/springbootiocdibeantransactionorm/entity/Category.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SpringBoot-IoC-DI-Bean-Transaction-ORM/src/main/java/org/example/springbootiocdibeantransactionorm/entity/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SpringBoot-IoC-DI-Bean-Transaction-ORM/src/main/java/org/example/springbootiocdibeantransactionorm/entity/Customer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SpringBoot-IoC-DI-Bean-Transaction-ORM/src/main/java/org/example/springbootiocdibeantransactionorm/entity/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SpringBoot-IoC-DI-Bean-Transaction-ORM/src/main/java/org/example/springbootiocdibeantransactionorm/entity/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SpringBoot-IoC-DI-Bean-Transaction-ORM/src/main/java/org/example/springbootiocdibeantransactionorm/entity/OrderItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SpringBoot-IoC-DI-Bean-Transaction-ORM/src/main/java/org/example/springbootiocdibeantransactionorm/entity/OrderItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SpringBoot-IoC-DI-Bean-Transaction-ORM/src/main/java/org/example/springbootiocdibeantransactionorm/entity/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SpringBoot-IoC-DI-Bean-Transaction-ORM/src/main/java/org/example/springbootiocdibeantransactionorm/entity/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SpringBoot-IoC-DI-Bean-Transaction-ORM/src/main/java/org/example/springbootiocdibeantransactionorm/repository/CategoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SpringBoot-IoC-DI-Bean-Transaction-ORM/src/main/java/org/example/springbootiocdibeantransactionorm/repository/CategoryRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SpringBoot-IoC-DI-Bean-Transaction-ORM/src/main/java/org/example/springbootiocdibeantransactionorm/repository/CustomerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SpringBoot-IoC-DI-Bean-Transaction-ORM/src/main/java/org/example/springbootiocdibeantransactionorm/repository/CustomerRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SpringBoot-IoC-DI-Bean-Transaction-ORM/src/main/java/org/example/springbootiocdibeantransactionorm/repository/OrderItemRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SpringBoot-IoC-DI-Bean-Transaction-ORM/src/main/java/org/example/springbootiocdibeantransactionorm/repository/OrderItemRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SpringBoot-IoC-DI-Bean-Transaction-ORM/src/main/java/org/example/springbootiocdibeantransactionorm/repository/OrderRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SpringBoot-IoC-DI-Bean-Transaction-ORM/src/main/java/org/example/springbootiocdibeantransactionorm/repository/OrderRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SpringBoot-IoC-DI-Bean-Transaction-ORM/src/main/java/org/example/springbootiocdibeantransactionorm/repository/ProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SpringBoot-IoC-DI-Bean-Transaction-ORM/src/main/java/org/example/springbootiocdibeantransactionorm/repository/ProductRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SpringBoot-IoC-DI-Bean-Transaction-ORM/src/main/java/org/example/springbootiocdibeantransactionorm/service/CategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SpringBoot-IoC-DI-Bean-Transaction-ORM/src/main/java/org/example/springbootiocdibeantransactionorm/service/CategoryService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SpringBoot-IoC-DI-Bean-Transaction-ORM/src/main/java/org/example/springbootiocdibeantransactionorm/service/CustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SpringBoot-IoC-DI-Bean-Transaction-ORM/src/main/java/org/example/springbootiocdibeantransactionorm/service/CustomerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SpringBoot-IoC-DI-Bean-Transaction-ORM/src/main/java/org/example/springbootiocdibeantransactionorm/service/OrderItemService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SpringBoot-IoC-DI-Bean-Transaction-ORM/src/main/java/org/example/springbootiocdibeantransactionorm/service/OrderItemService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SpringBoot-IoC-DI-Bean-Transaction-ORM/src/main/java/org/example/springbootiocdibeantransactionorm/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SpringBoot-IoC-DI-Bean-Transaction-ORM/src/main/java/org/example/springbootiocdibeantransactionorm/service/OrderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SpringBoot-IoC-DI-Bean-Transaction-ORM/src/main/java/org/example/springbootiocdibeantransactionorm/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SpringBoot-IoC-DI-Bean-Transaction-ORM/src/main/java/org/example/springbootiocdibeantransactionorm/service/ProductService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SpringBoot-IoC-DI-Bean-Transaction-ORM/src/main/resources/templates/products/edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/../SpringBoot-IoC-DI-Bean-Transaction-ORM/src/main/resources/templates/products/edit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../demo branch/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../demo branch/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../demo-libary/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../demo-libary/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-security-jwt/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-security-jwt/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-security-jwt/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-security-jwt/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-security-jwt/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-security-jwt/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-security-jwt/src/main/java/com/example/spring_security_jwt/SpringSecurityJwtApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-security-jwt/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-security-jwt/src/test/java/com/example/spring_security_jwt/SpringSecurityJwtApplicationTests.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,7 +80,7 @@
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Nguyen/Documents/GitHub/fptaptech-sem4/SpringBoot-IoC-DI-Bean-Transaction-ORM",
+    "last_opened_file_path": "C:/Users/Nguyen/Documents/GitHub/fptaptech-sem4/spring_security",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -249,6 +240,7 @@
       <workItem from="1742867512927" duration="206000" />
       <workItem from="1742969424742" duration="391000" />
       <workItem from="1742972858142" duration="456000" />
+      <workItem from="1743654841130" duration="124000" />
     </task>
     <servers />
   </component>
