@@ -1,0 +1,189 @@
+.payment-container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 25px;
+  background: linear-gradient(135deg, #f0f4f8 0%, #e9ecef 100%);
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.payment-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #ddd;
+
+  h2 {
+    font-size: 26px;
+    color: #222;
+    margin: 0;
+    display: flex;
+    align-items: center;
+
+    i {
+      margin-right: 12px;
+      color: #0070ba; /* Màu đặc trưng của PayPal */
+    }
+  }
+
+  .back-btn {
+    padding: 10px 20px;
+    background-color: #495057;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: #343a40;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8 silencepx rgba(0, 0, 0, 0.1);
+    }
+
+    i {
+      margin-right: 8px;
+    }
+  }
+}
+
+.alert-danger {
+  padding: 15px;
+  background-color: #ffe3e5;
+  color: #9b2d30;
+  border: none;
+  border-radius: 8px;
+  margin-bottom: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(255, 0, 0, 0.1);
+  animation: fadeIn 0.5s ease-in;
+
+  i {
+    margin-right: 12px;
+    font-size: 18px;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.payment-details {
+  &.card {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    margin-bottom: 25px;
+
+    h3 {
+      font-size: 20px;
+      color: #444;
+      margin: 0 0 20px 0;
+      display: flex;
+      align-items: center;
+
+      i {
+        margin-right: 10px;
+        color: #007bff;
+      }
+    }
+
+    .detail-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 15px;
+      padding: 10px 0;
+      border-bottom: 1px dashed #eee;
+
+      .label {
+        font-weight: 600;
+        color: #555;
+        display: flex;
+        align-items: center;
+
+        i {
+          margin-right: 8px;
+          color: #007bff;
+          font-size: 14px;
+        }
+      }
+
+      .value {
+        color: #222;
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+.loading-state {
+  text-align: center;
+  padding: 25px;
+  color: #555;
+  font-size: 18px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 8px;
+  margin-bottom: 20px;
+
+  i {
+    margin-right: 12px;
+    font-size: 24px;
+    color: #007bff;
+  }
+}
+
+.paypal-section {
+  text-align: center;
+
+  .instruction {
+    font-size: 17px;
+    color: #444;
+    margin-bottom: 20px;
+    font-style: italic;
+  }
+
+  .paypal-button {
+    display: inline-block;
+    min-height: 60px;
+    width: 100%;
+    max-width: 300px;
+    transition: opacity 0.3s ease;
+
+    &:empty::before {
+      content: "Loading PayPal Button...";
+      color: #666;
+      font-size: 14px;
+    }
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .payment-container {
+    margin: 20px;
+    padding: 15px;
+  }
+
+  .payment-header {
+    flex-direction: column;
+    align-items: flex-start;
+
+    h2 {
+      font-size: 22px;
+      margin-top: 10px;
+    }
+  }
+
+  .payment-details .card {
+    padding: 15px;
+  }
+
+  .paypal-button {
+    max-width: 100%;
+  }
+}

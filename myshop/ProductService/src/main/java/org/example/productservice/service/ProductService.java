@@ -62,7 +62,7 @@ public class ProductService {
         product.setName(updatedProduct.getName());
         product.setPrice(updatedProduct.getPrice());
         product.setStock(updatedProduct.getStock());
-
+        product.setDescription(updatedProduct.getDescription());
         return productRepository.save(product);
     }
 

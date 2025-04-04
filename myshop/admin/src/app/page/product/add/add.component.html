@@ -1,0 +1,72 @@
+<div class="add-product-container">
+  <div class="header-section">
+    <a routerLink="/products" class="back-link"><i class="fas fa-arrow-left"></i> Back to Product List</a>
+    <h2><i class="fas fa-plus-circle"></i> Add New Product</h2>
+  </div>
+
+  <form (ngSubmit)="addProduct()" class="add-product-form" [@fadeIn]="'in'">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input
+        type="text"
+        id="name"
+        [(ngModel)]="product.name"
+        name="name"
+        placeholder="Enter product name"
+        required
+        class="form-control"
+      />
+      <div class="error-message" *ngIf="submitted && !product.name">Product name is required</div>
+    </div>
+
+    <div class="form-group">
+      <label for="price">Price</label>
+      <input
+        type="number"
+        id="price"
+        [(ngModel)]="product.price"
+        name="price"
+        min="0"
+        placeholder="Enter price"
+        required
+        class="form-control"
+      />
+      <div class="error-message" *ngIf="submitted && !product.price">Price is required and must be >= 0</div>
+    </div>
+
+    <div class="form-group">
+      <label for="stock">Stock</label>
+      <input
+        type="number"
+        id="stock"
+        [(ngModel)]="product.stock"
+        name="stock"
+        min="0"
+        placeholder="Enter stock quantity"
+        required
+        class="form-control"
+      />
+      <div class="error-message" *ngIf="submitted && !product.stock">Stock is required and must be >= 0</div>
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea
+        id="description"
+        [(ngModel)]="product.description"
+        name="description"
+        placeholder="Enter product description (optional)"
+        class="form-control"
+      ></textarea>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="btn-submit">
+        <i class="fas fa-check"></i> Add Product
+      </button>
+      <button type="button" class="btn-cancel" (click)="router.navigate(['/products'])">
+         Cancel
+      </button>
+    </div>
+  </form>
+</div>

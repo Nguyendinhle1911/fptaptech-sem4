@@ -1,0 +1,48 @@
+<div class="product-list-container">
+  <div class="header-section">
+    <a routerLink="/" class="back-link"><i class="fas fa-arrow-left"></i> Back to Dashboard</a>
+    <h2><i class="fas fa-box-open"></i> Product List</h2>
+  </div>
+
+  <div class="action-section">
+    <button class="btn-add" routerLink="/add-product">
+      <i class="fas fa-plus"></i> Add New Product
+    </button>
+  </div>
+
+  <div class="table-wrapper" *ngIf="products.length > 0">
+    <table class="product-table">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Stock</th>
+        <th>Description</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let product of products; let i = index" [@fadeIn]="i">
+        <td>{{ product.id }}</td>
+        <td>{{ product.name }}</td>
+        <td>{{ product.price | currency }}</td>
+        <td>{{ product.stock }}</td>
+        <td>{{ product.description || 'No description' }}</td>
+        <td>
+          <button class="action-btn edit-btn" [routerLink]="['/update-product', product.id]">
+            <i class="fas fa-edit"></i>
+          </button>
+          <button class="action-btn delete-btn" (click)="deleteProduct(product.id)">
+            <i class="fas fa-trash-alt"></i>
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="no-data" *ngIf="products.length === 0">
+    <i class="fas fa-exclamation-circle"></i> No products available
+  </div>
+</div>

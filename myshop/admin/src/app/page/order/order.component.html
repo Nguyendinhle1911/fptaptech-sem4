@@ -1,0 +1,92 @@
+<div class="product-list-container">
+  <a routerLink="/" class="back-link"><i class="fas fa-arrow-left"></i> Back to Dashboard</a>
+  <div class="header-section">
+    <h2><i class="fas fa-shopping-cart"></i> My Orders</h2>
+
+    <div class="search-section">
+      <input
+        type="text"
+        placeholder="Search orders by ID, user ID, price, date, or status..."
+        [(ngModel)]="searchTerm"
+        (input)="filterOrders()"
+        class="search-input"
+      />
+      <i class="fas fa-search search-icon"></i>
+    </div>
+
+    <!-- Thêm nút Create New Order -->
+    <button
+      class="action-btn create-btn"
+      routerLink="/order-create"
+      data-tooltip="Create a new order"
+    >
+      <i class="fas fa-plus-circle"></i> Create New Order
+    </button>
+  </div>
+
+  <div *ngIf="errorMessage" class="alert alert-danger">
+    {{ errorMessage }}
+  </div>
+
+  <div class="table-wrapper" *ngIf="filteredOrders.length > 0; else loading">
+    <table class="product-table">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Total Price</th>
+        <th>Date</th>
+        <th>Status</th>
+        <th>Products</th>
+        <th>Method</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let order of filteredOrders">
+        <td data-label="ID">{{ order.id }} && {{ order.userId }}</td>
+        <td data-label="Total Price">{{ order.totalPrice | currency }}</td>
+        <td data-label="Date">{{ order.orderDate | date }}</td>
+        <td data-label="Status">{{ order.status }}</td>
+        <td data-label="Products">
+            <span *ngFor="let product of order.products; let last = last">
+              {{ product.productId }} (x{{ product.quantity }}){{ last ? '' : ', ' }}
+            </span>
+        </td>
+        <td data-label="Payment Method">{{ order.paymentMethod }}</td>
+        <td data-label="Actions">
+          <button
+            class="action-btn edit-btn"
+            data-tooltip="Mark as Completed"
+            [class.btn-success]="order.status === 'PENDING'"
+            [class.btn-secondary]="order.status !== 'PENDING'"
+            (click)="order.status === 'PENDING' && confirm('Are you sure you want to mark this order as COMPLETED?') && updateOrderStatus(order.id, 'COMPLETED')"
+            [disabled]="order.status !== 'PENDING'"
+          >
+            <i class="fas fa-check-circle"></i> COMPLETED
+          </button>
+          <button
+            class="action-btn delete-btn"
+            data-tooltip="Cancel Order"
+            [class.btn-danger]="order.status === 'PENDING'"
+            [class.btn-secondary]="order.status !== 'PENDING'"
+            (click)="order.status === 'PENDING' && confirm('Are you sure you want to cancel this order?') && updateOrderStatus(order.id, 'CANCELLED')"
+            [disabled]="order.status !== 'PENDING'"
+          >
+            <i class="fas fa-times-circle"></i> CANCELLED
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <ng-template #loading>
+    <div class="loading-state">
+      <i class="fas fa-spinner fa-spin"></i> Loading orders...
+    </div>
+  </ng-template>
+
+  <div class="no-data" *ngIf="filteredOrders.length === 0 && !loading">
+    <i class="fas fa-exclamation-circle"></i> No orders available
+  </div>
+</div>

@@ -1,0 +1,102 @@
+<div class="order-create-container">
+  <h2><i class="fas fa-shopping-cart"></i> Create New Order</h2>
+
+  <div *ngIf="errorMessage" class="alert alert-danger">
+    {{ errorMessage }}
+  </div>
+
+  <div class="product-selection">
+    <h3>Select Products</h3>
+    <table class="product-table" *ngIf="products.length > 0; else loadingTemplate">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Stock</th>
+        <th>Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let product of products">
+        <td>{{ product.id }}</td>
+        <td>{{ product.name }}</td>
+        <td>{{ product.price | currency }}</td>
+        <td>{{ product.stock }}</td>
+        <td>
+          <button class="action-btn" (click)="addProduct(product.id)">
+            Add to Order
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+    <ng-template #loadingTemplate>
+      <div class="loading-state">
+        <i class="fas fa-spinner fa-spin"></i> Loading products...
+      </div>
+    </ng-template>
+  </div>
+
+  <div class="selected-products" *ngIf="selectedProducts.length > 0">
+    <h3>Selected Products</h3>
+    <table class="product-table">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of selectedProducts">
+        <td>{{ item.productId }}</td>
+        <td>{{ getProductPrice(item.productId) | currency }}</td>
+        <td>
+          <input
+            type="number"
+            min="1"
+            [(ngModel)]="item.quantity"
+            (change)="updateQuantity(item.productId, item.quantity)"
+          />
+        </td>
+        <td>
+          <button class="action-btn delete-btn" (click)="removeProduct(item.productId)">
+            Remove
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <p>Total Price: {{ calculateTotalPrice() | currency }}</p>
+  </div>
+
+  <div class="payment-method">
+    <h3>Payment Method</h3>
+    <div class="radio-group">
+      <label class="radio-option">
+        <input type="radio" [(ngModel)]="paymentMethod" name="paymentMethod" value="CASH">
+        <span>Cash</span>
+      </label>
+      <label class="radio-option">
+        <input type="radio" [(ngModel)]="paymentMethod" name="paymentMethod" value="PAYPAL">
+        <span>PayPal</span>
+      </label>
+    </div>
+  </div>
+
+  <button
+    class="action-btn submit-btn"
+    [disabled]="selectedProducts.length === 0 || loading"
+    (click)="createOrder()"
+  >
+    <span *ngIf="!loading">
+      <i class="fas fa-check"></i> Create Order
+    </span>
+    <span *ngIf="loading">
+      <i class="fas fa-spinner fa-spin"></i> Processing...
+    </span>
+  </button>
+</div>
