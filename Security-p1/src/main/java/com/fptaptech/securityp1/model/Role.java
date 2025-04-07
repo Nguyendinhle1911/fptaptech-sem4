@@ -1,7 +1,11 @@
 package com.fptaptech.securityp1.model;
 
 import jakarta.persistence.*;
+
+
 import java.util.Set;
+
+
 
 @Entity
 @Table(name = "roles")
