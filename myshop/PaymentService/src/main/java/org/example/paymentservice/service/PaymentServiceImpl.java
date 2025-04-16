@@ -104,6 +104,41 @@ public class PaymentServiceImpl implements PaymentService {
         return null;
     }
 
+    // New method to capture the PayPal payment
+    private boolean capturePaypalPayment(String paypalOrderId) {
+        String accessToken = getAccessToken();
+        if (accessToken == null) {
+            System.err.println("Error: Could not obtain PayPal access token for capture.");
+            return false;
+        }
+
+        String captureUrl = PAYPAL_ORDER_URL + "/" + paypalOrderId + "/capture";
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Authorization", "Bearer " + accessToken);
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        HttpEntity<String> entity = new HttpEntity<>("", headers); // Empty body for capture
+
+        try {
+            ResponseEntity<Map> response = restTemplate.exchange(
+                    captureUrl,
+                    HttpMethod.POST,
+                    entity,
+                    Map.class
+            );
+
+            if (response.getStatusCode() == HttpStatus.CREATED && response.getBody() != null) {
+                String status = (String) response.getBody().get("status");
+                return "COMPLETED".equals(status);
+            }
+        } catch (Exception e) {
+            System.err.println("Error capturing PayPal payment: " + e.getMessage());
+            e.printStackTrace();
+        }
+        return false;
+    }
+
     @Override
     @Transactional
     public String processPaypalPayment(Long orderId, double amount) {
@@ -140,6 +175,34 @@ public class PaymentServiceImpl implements PaymentService {
         payment.setTransactionId(paypalOrderId); // Cập nhật PayPal order ID
         paymentRepository.save(payment);
         return paypalOrderId;
+    }
+
+    // New method to complete the payment
+    @Transactional
+    @Override
+    public boolean completePaypalPayment(Long orderId, String paypalOrderId) {
+        Payment payment = paymentRepository.findByOrderId(orderId)
+                .orElseThrow(() -> new RuntimeException("Payment not found for order ID: " + orderId));
+
+        if ("COMPLETED".equals(payment.getStatus())) {
+            return true; // Payment already completed
+        }
+
+        if (!paypalOrderId.equals(payment.getTransactionId())) {
+            throw new RuntimeException("PayPal Order ID does not match the payment record.");
+        }
+
+        boolean captured = capturePaypalPayment(paypalOrderId);
+        if (captured) {
+            payment.setStatus("COMPLETED");
+            payment.setPaymentDate(LocalDateTime.now());
+            paymentRepository.save(payment);
+            return true;
+        } else {
+            payment.setStatus("FAILED");
+            paymentRepository.save(payment);
+            return false;
+        }
     }
 
     @Override

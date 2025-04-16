@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập JWT</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .login-container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            width: 100%;
+            max-width: 400px;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #34495e;
+            font-weight: 500;
+        }
+        input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        button {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+        .message {
+            margin: 1rem 0;
+            padding: 0.5rem;
+            border-radius: 4px;
+            text-align: center;
+        }
+        .error {
+            background-color: #ffebee;
+            color: #c62828;
+        }
+        .success {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+        }
+        #token-display {
+            margin-top: 1rem;
+            word-break: break-all;
+            font-size: 0.8rem;
+            background: #f5f5f5;
+            padding: 0.5rem;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+<div class="login-container">
+    <h1>ĐĂNG NHẬP JWT</h1>
+
+    <div id="message" class="message" style="display: none;"></div>
+
+    <div class="form-group">
+        <label for="username">Tên đăng nhập</label>
+        <input type="text" id="username" placeholder="Nhập tên đăng nhập">
+    </div>
+
+    <div class="form-group">
+        <label for="password">Mật khẩu</label>
+        <input type="password" id="password" placeholder="Nhập mật khẩu">
+    </div>
+
+    <button onclick="login()">ĐĂNG NHẬP</button>
+
+    <div id="token-display" style="display: none;">
+        <strong>JWT Token:</strong>
+        <div id="token-content"></div>
+        <button onclick="copyToken()" style="margin-top: 0.5rem;">Copy Token</button>
+    </div>
+</div>
+
+<script>
+    async function login() {
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        const messageDiv = document.getElementById('message');
+        const tokenDisplay = document.getElementById('token-display');
+        const tokenContent = document.getElementById('token-content');
+
+        try {
+            const response = await fetch('/api/auth/loginjwt', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    username: username,
+                    password: password
+                })
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                messageDiv.style.display = 'block';
+                messageDiv.className = 'message success';
+                messageDiv.textContent = 'Đăng nhập thành công!';
+
+                tokenDisplay.style.display = 'block';
+                tokenContent.textContent = data.jwt;
+
+                // Lưu token vào localStorage/sessionStorage nếu cần
+                localStorage.setItem('jwtToken', data.jwt);
+
+                // Chuyển hướng sau khi đăng nhập thành công
+                setTimeout(() => {
+                    window.location.href = '/';
+                }, 1500);
+            } else {
+                messageDiv.style.display = 'block';
+                messageDiv.className = 'message error';
+                messageDiv.textContent = data.message || 'Đăng nhập thất bại';
+            }
+        } catch (error) {
+            messageDiv.style.display = 'block';
+            messageDiv.className = 'message error';
+            messageDiv.textContent = 'Lỗi kết nối: ' + error.message;
+        }
+    }
+
+    function copyToken() {
+        const token = document.getElementById('token-content').textContent;
+        navigator.clipboard.writeText(token)
+            .then(() => alert('Đã copy token!'))
+            .catch(err => alert('Lỗi khi copy: ' + err));
+    }
+</script>
+</body>
+</html>

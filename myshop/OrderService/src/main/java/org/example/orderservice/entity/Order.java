@@ -26,6 +26,11 @@ public class Order {
     @Column(nullable = false)
     private LocalDateTime orderDate;
 
+    @Column(nullable = false)
+    private String address;
+
+    private String description;
+
     private String status;
 
     @Column(nullable = false)

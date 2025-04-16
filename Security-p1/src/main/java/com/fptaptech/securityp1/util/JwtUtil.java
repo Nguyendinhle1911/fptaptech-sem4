@@ -3,9 +3,11 @@ package com.fptaptech.securityp1.util;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.security.Keys;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
+import javax.crypto.SecretKey;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -14,8 +16,11 @@ import java.util.function.Function;
 @Component
 public class JwtUtil {
 
-    private String SECRET_KEY = "your-256-bit-secret-key-here"; // Thay bằng key bí mật của bạn (nên lưu trong file config)
-    private long JWT_EXPIRATION = 1000 * 60 * 60; // 1 giờ
+    // Sử dụng Keys.secretKeyFor() để tạo key an toàn
+    private final SecretKey SECRET_KEY = Keys.secretKeyFor(SignatureAlgorithm.HS256);
+
+    // Thời gian hết hạn của token (5 giờ)
+    private static final long JWT_EXPIRATION = 5 * 60 * 60 * 1000;
 
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
@@ -31,7 +36,11 @@ public class JwtUtil {
     }
 
     private Claims extractAllClaims(String token) {
-        return Jwts.parser().setSigningKey(SECRET_KEY).parseClaimsJws(token).getBody();
+        return Jwts.parser()
+                .verifyWith(SECRET_KEY)
+                .build()
+                .parseSignedClaims(token)
+                .getPayload();
     }
 
     private Boolean isTokenExpired(String token) {
@@ -45,11 +54,11 @@ public class JwtUtil {
 
     private String createToken(Map<String, Object> claims, String subject) {
         return Jwts.builder()
-                .setClaims(claims)
-                .setSubject(subject)
-                .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + JWT_EXPIRATION))
-                .signWith(SignatureAlgorithm.HS256, SECRET_KEY)
+                .claims(claims)
+                .subject(subject)
+                .issuedAt(new Date(System.currentTimeMillis()))
+                .expiration(new Date(System.currentTimeMillis() + JWT_EXPIRATION))
+                .signWith(SECRET_KEY, SignatureAlgorithm.HS256)
                 .compact();
     }
 

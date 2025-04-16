@@ -1,0 +1,52 @@
+entity Customer {
+    name String required
+    email String required
+    phone String
+    address String
+}
+
+entity Product {
+    name String required
+    description String
+    price BigDecimal required
+    stockQuantity Integer required
+}
+
+entity Order {
+    orderDate Instant required
+    status OrderStatus required
+    totalAmount BigDecimal required
+}
+
+enum OrderStatus {
+    PENDING,
+    PROCESSING,
+    SHIPPED,
+    DELIVERED,
+    CANCELLED
+}
+
+entity OrderDetail {
+    quantity Integer required
+    unitPrice BigDecimal required
+    subTotal BigDecimal required
+}
+
+relationship ManyToOne {
+    Order{customer} to Customer
+}
+
+relationship OneToMany {
+    Order{orderDetail} to OrderDetail{order}
+}
+
+relationship ManyToOne {
+    OrderDetail{product} to Product
+}
+
+// Các tùy chọn hiển thị
+dto * with mapstruct
+service * with serviceImpl
+paginate Order with pagination
+paginate Customer with pagination
+paginate Product with pagination

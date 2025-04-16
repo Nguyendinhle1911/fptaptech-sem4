@@ -28,6 +28,18 @@ public class PaymentController {
         return ResponseEntity.ok(paypalOrderId); // Trả về chuỗi trực tiếp
     }
 
+    @PostMapping("/paypal/complete")
+    public ResponseEntity<String> completePayment(
+            @RequestParam Long orderId,
+            @RequestParam String paypalOrderId
+    ) {
+        boolean success = paymentService.completePaypalPayment(orderId, paypalOrderId);
+        if (success) {
+            return ResponseEntity.ok("Payment completed successfully");
+        }
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Payment capture failed");
+    }
+
     @PostMapping("/paypal/update-status")
     public ResponseEntity<Void> updatePaymentStatus(@RequestBody Map<String, String> request) {
         Long orderId = Long.valueOf(request.get("orderId"));

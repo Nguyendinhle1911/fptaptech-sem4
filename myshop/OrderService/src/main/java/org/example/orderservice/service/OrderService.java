@@ -55,11 +55,17 @@ public class OrderService {
             throw new IllegalArgumentException("Phương thức thanh toán không hợp lệ: " + paymentMethod);
         }
 
+        if (requestDto.getAddress() == null || requestDto.getAddress().trim().isEmpty()) {
+            throw new IllegalArgumentException("Địa chỉ giao hàng không được để trống!");
+        }
+
         Order order = new Order();
         order.setUserId(userId);
         order.setOrderDate(LocalDateTime.now());
         order.setStatus("PENDING");
         order.setPaymentMethod(paymentMethod);
+        order.setAddress(requestDto.getAddress());
+        order.setDescription(requestDto.getDescription());
 
         Set<OrderProduct> orderProducts = new HashSet<>();
         double totalPrice = 0.0;
@@ -121,7 +127,10 @@ public class OrderService {
 
             String paypalOrderId = paypalOrderResponse.getBody();
             savedOrder.setStatus("PENDING");
-            savedOrder = orderRepository.save(savedOrder);
+            orderRepository.save(savedOrder);
+
+            // Note: The actual capture happens after user approval, typically in a separate callback
+            return mapToOrderResponseDto(savedOrder); // Return with PayPal Order ID for frontend to handle
         }
 
         return mapToOrderResponseDto(savedOrder);
@@ -228,6 +237,8 @@ public class OrderService {
         responseDto.setTotalPrice(order.getTotalPrice());
         responseDto.setOrderDate(order.getOrderDate());
         responseDto.setStatus(order.getStatus());
+        responseDto.setAddress(order.getAddress());
+        responseDto.setDescription(order.getDescription());
         responseDto.setPaymentMethod(order.getPaymentMethod());
 
         List<OrderProductDto> productDtos = order.getProducts().stream()

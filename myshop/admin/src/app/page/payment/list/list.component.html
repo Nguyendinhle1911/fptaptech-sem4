@@ -1,0 +1,38 @@
+<div class="container mt-5">
+  <a routerLink="/" class="back-link"><i class="fas fa-arrow-left"></i> Back to Dashboard</a>
+
+  <h2 class="text-center text-primary fw-bold mb-4">📋 Paypal List</h2>
+
+  <div class="table-responsive shadow-lg rounded-4 p-3 bg-white">
+    <table class="table table-hover align-middle">
+      <thead class="table-dark text-uppercase text-center">
+      <tr>
+        <th>#</th>
+        <th>🆔 Order ID</th>
+        <th>💰 Amount</th>
+        <th>💳 Method</th>
+        <th>📌 Status</th>
+        <th>📅 Date</th>
+        <th>🔗 Transaction Id</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let payment of payments; let i = index" [ngClass]="getRowClass(payment.status)">
+        <td class="fw-bold text-muted">{{ i + 1 }}</td>
+        <td>{{ payment.orderId }}</td>
+        <td class="text-success fw-bold">{{ payment.amount | currency:'$' }}</td>
+        <td>{{ payment.paymentMethod }}</td>
+        <td>
+            <span class="badge rounded-pill text-white fw-bold" >
+              {{ payment.status }}
+            </span>
+        </td>
+        <td>{{ payment.paymentDate | date:'yyyy-MM-dd HH:mm:ss' }}</td>
+        <td>
+          <span class="text-primary fw-semibold">{{ payment.transactionId || '' }}</span>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

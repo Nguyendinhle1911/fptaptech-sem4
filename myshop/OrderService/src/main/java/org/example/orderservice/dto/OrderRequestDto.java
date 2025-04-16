@@ -10,4 +10,7 @@ import java.util.Map;
 public class OrderRequestDto {
     private Map<Long, Integer> productQuantities; // productId -> quantity
     private String paymentMethod; // "CASH" or "PAYPAL"
+    private String address;
+    private String description;
+
 }

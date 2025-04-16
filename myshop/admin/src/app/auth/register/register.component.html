@@ -1,0 +1,41 @@
+<div class="register-container">
+  <form (ngSubmit)="onSubmit()" class="register-form" #registerForm="ngForm">
+    <h2>Register</h2>
+
+    <div class="form-group">
+      <label for="username">Email</label>
+      <input
+        type="email"
+        id="username"
+        name="username"
+        [(ngModel)]="username"
+        required
+        email
+        #usernameInput="ngModel"
+        placeholder="Enter your email">
+      <div class="error" *ngIf="usernameInput.invalid && usernameInput.touched">
+        Please enter a valid email address
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        [(ngModel)]="password"
+        required
+        #passwordInput="ngModel"
+        placeholder="Enter password">
+      <div class="error" *ngIf="passwordInput.invalid && passwordInput.touched">
+        Password is required
+      </div>
+    </div>
+
+    <div class="error" *ngIf="error">{{error}}</div>
+
+    <button type="submit" [disabled]="registerForm.invalid">Register</button>
+    <a routerLink="/login">Already have an account? Login</a>
+  </form>
+</div>

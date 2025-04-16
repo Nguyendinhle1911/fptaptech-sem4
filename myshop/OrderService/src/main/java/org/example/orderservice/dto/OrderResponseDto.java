@@ -13,7 +13,11 @@ public class OrderResponseDto {
     private Long userId;
     private double totalPrice;
     private LocalDateTime orderDate;
+    private String address;
+    private String description;
     private String status;
     private String paymentMethod; // "CASH" or "PAYPAL"
     private List<OrderProductDto> products;
+
+
 }
