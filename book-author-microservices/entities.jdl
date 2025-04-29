@@ -1,0 +1,22 @@
+entity Book {
+  title String required minlength(3) maxlength(100)
+  genre String maxlength(50)
+  publicationYear Integer min(1800) max(2025)
+}
+
+entity Author {
+  name String required minlength(2) maxlength(100)
+  birthDate LocalDate
+  nationality String maxlength(50)
+}
+
+relationship ManyToMany {
+  Book{authors(name)} to Author{books(title)}
+}
+
+service * with serviceClass
+paginate * with pagination
+microservice Book with bookService
+microservice Author with authorService
+search Book with elasticsearch
+search Author with elasticsearch

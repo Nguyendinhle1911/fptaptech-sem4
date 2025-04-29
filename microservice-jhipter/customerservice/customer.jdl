@@ -1,0 +1,26 @@
+application {
+  config {
+    baseName customerService,
+    applicationType microservice,
+    packageName com.example.customer,
+    authenticationType jwt,
+    databaseType sql,
+    devDatabaseType h2Disk,
+    prodDatabaseType postgresql,
+    buildTool maven,
+    serviceDiscoveryType eureka
+  }
+  entities Customer
+}
+
+entity Customer {
+  name String required,
+  email String required pattern(/^[^@\s]+@[^@\s]+\.[^@\s]+$/),
+  password String required,
+  phone String required minlength(10) maxlength(15),
+  address String
+}
+
+dto Customer with mapstruct
+paginate Customer with pagination
+service Customer with serviceClass

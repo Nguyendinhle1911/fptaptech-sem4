@@ -1,0 +1,50 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (order(); as orderRef) {
+      <div>
+        <h2 data-cy="orderDetailsHeading"><span jhiTranslate="myJhipsterApp.order.detail.title">Order</span></h2>
+
+        <hr />
+
+        <jhi-alert-error />
+
+        <jhi-alert />
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ orderRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="myJhipsterApp.order.orderDate">Order Date</span></dt>
+          <dd>
+            <span>{{ orderRef.orderDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="myJhipsterApp.order.totalAmount">Total Amount</span></dt>
+          <dd>
+            <span>{{ orderRef.totalAmount }}</span>
+          </dd>
+          <dt><span jhiTranslate="myJhipsterApp.order.status">Status</span></dt>
+          <dd>
+            <span>{{ orderRef.status }}</span>
+          </dd>
+          <dt><span jhiTranslate="myJhipsterApp.order.customer">Customer</span></dt>
+          <dd>
+            @if (order()!.customer) {
+              <div>
+                <a [routerLink]="['/customer', order()!.customer?.id, 'view']">{{ orderRef.customer?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/order', orderRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

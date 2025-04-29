@@ -1,0 +1,39 @@
+application {
+  config {
+    baseName orderService,
+    applicationType microservice,
+    packageName com.example.order,
+    authenticationType jwt,
+    databaseType sql,
+    devDatabaseType h2Disk,
+    prodDatabaseType postgresql,
+    buildTool maven,
+    serviceDiscoveryType eureka
+  }
+  entities Product, Order, OrderDetail
+}
+
+entity Product {
+  name String required,
+  price BigDecimal required,
+  stock Integer required
+}
+
+entity Order {
+  orderDate Instant required,
+  totalAmount BigDecimal required
+}
+
+entity OrderDetail {
+  quantity Integer required,
+  price BigDecimal required
+}
+
+relationship ManyToOne {bi
+  OrderDetail{order} to Order,
+  OrderDetail{product} to Product
+}
+
+dto * with mapstruct
+paginate * with pagination
+service * with serviceClass

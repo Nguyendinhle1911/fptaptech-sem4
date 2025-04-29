@@ -1,0 +1,81 @@
+version: '3.8'
+services:
+  jhipster-registry:
+    image: jhipster/jhipster-registry:v7.4.0
+    ports:
+      - "8761:8761"
+    environment:
+      - SPRING_CLOUD_CONFIG_SERVER_COMPOSITE_0_TYPE=git
+      - SPRING_CLOUD_CONFIG_SERVER_COMPOSITE_0_URI=https://github.com/your-repo/config.git
+    volumes:
+      - ./central-config:/central-config
+  consul:
+    image: consul:1.12
+    ports:
+      - "8500:8500"
+    command: consul agent -server -bootstrap-expect=1 -ui -data-dir=/consul/data -client=0.0.0.0
+  keycloak:
+    image: jboss/keycloak:16.1.1
+    ports:
+      - "8080:8080"
+    environment:
+      - KEYCLOAK_USER=admin
+      - KEYCLOAK_PASSWORD=admin
+      - DB_VENDOR=h2
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.17.9
+    ports:
+      - "9200:9200"
+    environment:
+      - discovery.type=single-node
+    volumes:
+      - es_data:/usr/share/elasticsearch/data
+  logstash:
+    image: docker.elastic.co/logstash/logstash:7.17.9
+    ports:
+      - "5000:5000"
+      - "9600:9600"
+    volumes:
+      - ./logstash.conf:/usr/share/logstash/pipeline/logstash.conf
+    depends_on:
+      - elasticsearch
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.17.9
+    ports:
+      - "5601:5601"
+    depends_on:
+      - elasticsearch
+  book-service:
+    image: book-service:latest
+    ports:
+      - "8081:8081"
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+      - SPRING_CLOUD_CONFIG_URI=http://jhipster-registry:8761/config
+    depends_on:
+      - jhipster-registry
+      - consul
+      - elasticsearch
+  author-service:
+    image: author-service:latest
+    ports:
+      - "8082:8082"
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+      - SPRING_CLOUD_CONFIG_URI=http://jhipster-registry:8761/config
+    depends_on:
+      - jhipster-registry
+      - consul
+      - elasticsearch
+  gateway:
+    image: gateway:latest
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+      - SPRING_CLOUD_CONFIG_URI=http://jhipster-registry:8761/config
+    depends_on:
+      - jhipster-registry
+      - consul
+volumes:
+  es_data:
