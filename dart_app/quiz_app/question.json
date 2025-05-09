@@ -1,0 +1,88 @@
+[
+  {
+    "question": "Dart ra mắt lần đầu năm nào?",
+    "options": ["2010", "2011", "2013", "2017"],
+    "answer": 1
+  },
+  {
+    "question": "Flutter là UI toolkit được phát triển bởi?",
+    "options": ["Apple", "Google", "Microsoft", "Facebook"],
+    "answer": 1
+  },
+  {
+    "question": "Cú pháp khai báo biến bất biến (immutable) trong Dart là?",
+    "options": ["var", "const", "final", "let"],
+    "answer": 2
+  },
+  {
+    "question": "Từ khóa nào để xử lý bất đồng bộ trong Dart?",
+    "options": ["sync", "await", "yield", "defer"],
+    "answer": 1
+  },
+    {
+      "question": "Kiểu dữ liệu nào trong Dart có thể chứa cả số nguyên và số thực?",
+      "options": ["int", "double", "num", "dynamic"],
+      "answer": 2
+    },
+    {
+      "question": "Từ khóa nào dùng để tạo class trong Dart?",
+      "options": ["object", "class", "struct", "define"],
+      "answer": 1
+    },
+    {
+      "question": "Phương thức nào được gọi đầu tiên khi widget được tạo?",
+      "options": ["build()", "initState()", "setState()", "dispose()"],
+      "answer": 1
+    },
+    {
+      "question": "StatelessWidget là gì?",
+      "options": [
+        "Widget có thể thay đổi trạng thái",
+        "Widget không có giao diện",
+        "Widget không có trạng thái nội bộ",
+        "Widget không thể render"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "Lệnh nào để thêm package vào Flutter project?",
+      "options": [
+        "flutter install package",
+        "flutter pub add",
+        "pub get add",
+        "dart install"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Widget nào dùng để căn giữa nội dung trong Flutter?",
+      "options": ["Center", "Align", "Container", "Positioned"],
+      "answer": 0
+    },
+    {
+      "question": "Từ khóa nào dùng để đánh dấu một hàm bất đồng bộ?",
+      "options": ["defer", "async", "future", "await"],
+      "answer": 1
+    },
+    {
+      "question": "Flutter sử dụng ngôn ngữ lập trình nào?",
+      "options": ["Java", "Kotlin", "Dart", "Swift"],
+      "answer": 2
+    },
+    {
+      "question": "Hàm setState() được dùng trong loại widget nào?",
+      "options": ["StatelessWidget", "StatefulWidget", "InheritedWidget", "HookWidget"],
+      "answer": 1
+    },
+    {
+      "question": "Đâu là công cụ dòng lệnh để khởi tạo một project Flutter mới?",
+      "options": [
+        "flutter init",
+        "flutter create",
+        "flutter start",
+        "flutter new"
+      ],
+      "answer": 1
+    }
+
+]
