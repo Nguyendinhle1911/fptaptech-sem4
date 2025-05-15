@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'screens/product_list_screen.dart';
+import 'screens/product_detail_screen.dart';
 import 'screens/cart_screen.dart';
 import 'screens/checkout_screen.dart';
 
@@ -14,15 +15,51 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Shopping App',
+      title: 'Cửa Hàng Mua Sắm',
       theme: ThemeData(
-        useMaterial3: true,
         primarySwatch: Colors.blue,
-        scaffoldBackgroundColor: Colors.grey[100],
+        useMaterial3: true,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.blue,
+          brightness: Brightness.light,
+          surface: Colors.white,
+          onSurface: Colors.black,
+        ),
+        scaffoldBackgroundColor: Colors.white,
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.blue,
+          foregroundColor: Colors.white,
+          elevation: 0,
+          centerTitle: true, // Căn giữa logo
+        ),
+        cardTheme: CardTheme(
+          elevation: 4,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+        ),
+        textTheme: const TextTheme(
+          headlineSmall: TextStyle(color: Colors.black),
+          titleLarge: TextStyle(color: Colors.black),
+          titleMedium: TextStyle(color: Colors.black),
+          bodyLarge: TextStyle(color: Colors.black),
+          bodyMedium: TextStyle(color: Colors.black),
+        ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            foregroundColor: Colors.black,
+            backgroundColor: Colors.blue.shade100,
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8),
+            ),
+          ),
+        ),
       ),
       initialRoute: '/',
       routes: {
         '/': (context) => const ProductListScreen(),
+        '/product_detail': (context) => const ProductDetailScreen(),
         '/cart': (context) => const CartScreen(),
         '/checkout': (context) => const CheckoutScreen(),
       },

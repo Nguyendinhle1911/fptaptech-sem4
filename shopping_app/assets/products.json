@@ -1,26 +1,202 @@
 [
   {
-    "id": "1",
-    "name": "Áo thun nam",
-    "price": 15.99,
-    "imageUrl": "https://authentic-shoes.com/wp-content/uploads/2023/11/4f55f48d-9fd7-4f1f-9ad4-e61eb532-768x768.png"
+    "id": 1,
+    "name": "Áo Thun Nam",
+    "category": "Thời Trang",
+    "description": "Áo thun cotton thoáng mát, phù hợp mặc hàng ngày.",
+    "price": 200000,
+    "imageUrl": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab",
+    "importDate": "2025-01-10",
+    "details": "Chất liệu: 100% cotton. Kích cỡ: S, M, L, XL."
   },
   {
-    "id": "2",
-    "name": "Quần jeans nữ",
-    "price": 29.99,
-    "imageUrl": "https://cdn.dafc.com.vn/catalog/product/dafc/1194504_000_66cc2f250223c.jpg"
+    "id": 2,
+    "name": "Quần Jeans",
+    "category": "Thời Trang",
+    "description": "Quần jeans phong cách, bền đẹp.",
+    "price": 500000,
+    "imageUrl": "https://images.unsplash.com/photo-1542272604-787c3835535d",
+    "importDate": "2025-02-15",
+    "details": "Chất liệu: Denim. Kích cỡ: 28-34."
   },
   {
-    "id": "3",
-    "name": "Giày thể thao nike",
-    "price": 49.99,
-    "imageUrl": "https://sneakerdaily.vn/wp-content/uploads/2023/08/Off-White-x-Air-Jordan-1-Retro-High-OG-Chicago-AA3834-101.jpg.webp"
+    "id": 3,
+    "name": "Áo Sơ Mi Nữ",
+    "category": "Thời Trang",
+    "description": "Áo sơ mi lụa mềm mại, phù hợp công sở hoặc sự kiện.",
+    "price": 350000,
+    "imageUrl": "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f",
+    "importDate": "2025-03-01",
+    "details": "Chất liệu: Lụa tổng hợp. Kích cỡ: XS, S, M, L."
   },
   {
-    "id": "4",
-    "name": "Túi xách thời trang",
-    "price": 35.99,
-    "imageUrl": "https://cdnphoto.dantri.com.vn/bRN89eenAkhusyBS3RZXgHhZjsc=/thumb_w/1360/2023/09/14/tuixachdatnhatthegioi9-1694677632378.jpg"
+    "id": 4,
+    "name": "Váy Maxi",
+    "category": "Thời Trang",
+    "description": "Váy maxi dài nhẹ nhàng, thích hợp đi biển hoặc dạo phố.",
+    "price": 450000,
+    "imageUrl": "https://images.unsplash.com/photo-1519235106719-06bab4573b45",
+    "importDate": "2025-03-05",
+    "details": "Chất liệu: Chiffon. Kích cỡ: S, M, L."
+  },
+  {
+    "id": 5,
+    "name": "Áo Khoác Hoodie",
+    "category": "Thời Trang",
+    "description": "Áo hoodie ấm áp, phong cách năng động.",
+    "price": 400000,
+    "imageUrl": "https://images.unsplash.com/photo-1503341504253-dff4815485f1",
+    "importDate": "2025-03-10",
+    "details": "Chất liệu: Nỉ bông. Kích cỡ: M, L, XL."
+  },
+  {
+    "id": 6,
+    "name": "Giày Sneaker Nữ",
+    "category": "Giày Dép",
+    "description": "Giày sneaker thời thượng, êm ái, dễ phối đồ.",
+    "price": 700000,
+    "imageUrl": "https://images.unsplash.com/photo-1491553895911-0055eca6402d",
+    "importDate": "2025-03-15",
+    "details": "Chất liệu: Da tổng hợp. Kích cỡ: 36-39."
+  },
+  {
+    "id": 7,
+    "name": "Sandal Cao Gót",
+    "category": "Giày Dép",
+    "description": "Sandal cao gót thanh lịch, phù hợp dự tiệc.",
+    "price": 550000,
+    "imageUrl": "https://images.unsplash.com/photo-1515347619252-60a4bf4d2394",
+    "importDate": "2025-03-20",
+    "details": "Chất liệu: Da PU. Gót: 7cm. Kích cỡ: 35-38."
+  },
+  {
+    "id": 8,
+    "name": "Giày Thể Thao Nam",
+    "category": "Giày Dép",
+    "description": "Giày thể thao bền bỉ, hỗ trợ vận động mạnh.",
+    "price": 850000,
+    "imageUrl": "https://images.unsplash.com/photo-1542291026-7eec264c27ff",
+    "importDate": "2025-03-25",
+    "details": "Chất liệu: Vải lưới và cao su. Kích cỡ: 40-44."
+  },
+  {
+    "id": 9,
+    "name": "Điện Thoại Thông Minh",
+    "category": "Điện Tử",
+    "description": "Smartphone hiện đại với camera sắc nét, hiệu năng mạnh.",
+    "price": 10000000,
+    "imageUrl": "https://images.unsplash.com/photo-1511707171634-5f89772885ad",
+    "importDate": "2025-04-01",
+    "details": "Màn hình: 6.5 inch AMOLED. RAM: 8GB. Bộ nhớ: 128GB."
+  },
+  {
+    "id": 10,
+    "name": "Tai Nghe Không Dây",
+    "category": "Điện Tử",
+    "description": "Tai nghe true wireless, âm thanh chất lượng cao.",
+    "price": 1500000,
+    "imageUrl": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e",
+    "importDate": "2025-04-05",
+    "details": "Pin: 20 giờ. Công nghệ: Bluetooth 5.0. Chống ồn."
+  },
+  {
+    "id": 11,
+    "name": "Máy Tính Bảng",
+    "category": "Điện Tử",
+    "description": "Tablet nhẹ, tiện lợi cho học tập và giải trí.",
+    "price": 7000000,
+    "imageUrl": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3",
+    "importDate": "2025-04-10",
+    "details": "Màn hình: 10.1 inch. RAM: 4GB. Bộ nhớ: 64GB."
+  },
+  {
+    "id": 12,
+    "name": "Loa Bluetooth",
+    "category": "Điện Tử",
+    "description": "Loa không dây di động, âm thanh sống động.",
+    "price": 1200000,
+    "imageUrl": "https://images.unsplash.com/photo-1605648916361-9d936d4369b9",
+    "importDate": "2025-04-15",
+    "details": "Pin: 12 giờ. Công suất: 20W. Chống nước: IPX7."
+  },
+  {
+    "id": 13,
+    "name": "Son Môi Lì",
+    "category": "Mỹ Phẩm",
+    "description": "Son lì lâu trôi, màu sắc nổi bật, dưỡng môi nhẹ.",
+    "price": 350000,
+    "imageUrl": "https://images.unsplash.com/photo-1583331695686-8e7d897a03e2",
+    "importDate": "2025-04-20",
+    "details": "Chất liệu: Son lì dưỡng ẩm. Màu: Đỏ cam, hồng phấn."
+  },
+  {
+    "id": 14,
+    "name": "Son Dưỡng Có Màu",
+    "category": "Mỹ Phẩm",
+    "description": "Son dưỡng môi tự nhiên, lên màu nhẹ nhàng.",
+    "price": 250000,
+    "imageUrl": "https://images.unsplash.com/photo-1613336026275-74a5c781ed5d",
+    "importDate": "2025-04-25",
+    "details": "Chất liệu: Dưỡng môi organic. Màu: Hồng đào, đỏ nhạt."
+  },
+  {
+    "id": 15,
+    "name": "Nồi Chiên Không Dầu",
+    "category": "Nồi Chảo",
+    "description": "Nồi chiên không dầu tiện lợi, nấu ăn lành mạnh.",
+    "price": 2000000,
+    "imageUrl": "https://images.unsplash.com/photo-1620713056930-00399b5a2b9b",
+    "importDate": "2025-05-01",
+    "details": "Dung tích: 5L. Công suất: 1500W. Chất liệu: Nhựa ABS."
+  },
+  {
+    "id": 16,
+    "name": "Chảo Chống Dính",
+    "category": "Nồi Chảo",
+    "description": "Chảo chống dính cao cấp, dễ vệ sinh.",
+    "price": 450000,
+    "imageUrl": "https://images.unsplash.com/photo-1620803463748-7e5ea47f1b7f",
+    "importDate": "2025-05-05",
+    "details": "Đường kính: 28cm. Chất liệu: Nhôm phủ ceramic."
+  },
+  {
+    "id": 17,
+    "name": "Dao Bếp Đa Năng",
+    "category": "Dao",
+    "description": "Dao bếp sắc bén, phù hợp cắt thái nhiều loại thực phẩm.",
+    "price": 300000,
+    "imageUrl": "https://images.unsplash.com/photo-1586861352227-9e5e1f996b9a",
+    "importDate": "2025-05-10",
+    "details": "Chất liệu: Thép không gỉ. Chiều dài lưỡi: 20cm."
+  },
+  {
+    "id": 18,
+    "name": "Dao Gọt Trái Cây",
+    "category": "Dao",
+    "description": "Dao gọt nhỏ gọn, lý tưởng cho hoa quả và rau củ.",
+    "price": 150000,
+    "imageUrl": "https://images.unsplash.com/photo-1600586352387-6677e13e43d9",
+    "importDate": "2025-05-12",
+    "details": "Chất liệu: Thép không gỉ. Chiều dài lưỡi: 10cm."
+  },
+  {
+    "id": 19,
+    "name": "Thớt Gỗ Cao Cấp",
+    "category": "Thớt",
+    "description": "Thớt gỗ tự nhiên, bền, thân thiện với lưỡi dao.",
+    "price": 250000,
+    "imageUrl": "https://images.unsplash.com/photo-1600586352387-6677e13e43d9",
+    "importDate": "2025-05-15",
+    "details": "Chất liệu: Gỗ óc chó. Kích thước: 40x25cm."
+  },
+  {
+    "id": 20,
+    "name": "Thớt Nhựa An Toàn",
+    "category": "Thớt",
+    "description": "Thớt nhựa nhẹ, dễ vệ sinh, phù hợp cho bếp nhỏ.",
+    "price": 150000,
+    "imageUrl": "https://images.unsplash.com/photo-1600586352387-6677e13e43d9",
+    "importDate": "2025-05-15",
+    "details": "Chất liệu: Nhựa PP cao cấp. Kích thước: 35x20cm."
   }
 ]

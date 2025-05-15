@@ -24,8 +24,8 @@ flutter:
     - assets/background_icon.png
 
 flutter_launcher_icons:
-  android: true  # Chỉ tạo icon cho Android
-  ios: false     # Bỏ qua iOS
+  android: true
+  ios: false
   image_path: "assets/background_icon.png"
   min_sdk_android: 21
   adaptive_icon_foreground: "assets/background_icon.png"

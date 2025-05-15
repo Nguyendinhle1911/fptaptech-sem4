@@ -1,53 +1,55 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../models/product.dart';
+import 'package:shopping_app/models/cart_item.dart';
+import 'package:shopping_app/models/product.dart';
 
-class CartItem {
-  final Product product;
-  int quantity;
-
-  CartItem({required this.product, this.quantity = 1});
-}
+final cartProvider = StateNotifierProvider<CartNotifier, List<CartItem>>((ref) {
+  return CartNotifier();
+});
 
 class CartNotifier extends StateNotifier<List<CartItem>> {
   CartNotifier() : super([]);
 
-  double get totalPrice =>
-      state.fold(0, (sum, item) => sum + item.product.price * item.quantity);
-
   void addToCart(Product product) {
-    final existingItemIndex =
-    state.indexWhere((item) => item.product.id == product.id);
-    if (existingItemIndex >= 0) {
-      final updatedItems = [...state];
-      updatedItems[existingItemIndex] = CartItem(
-        product: state[existingItemIndex].product,
-        quantity: state[existingItemIndex].quantity + 1,
-      );
-      state = updatedItems;
+    final existingItem = state.firstWhere(
+          (item) => item.product.id == product.id,
+      orElse: () => CartItem(product: product),
+    );
+
+    if (state.contains(existingItem)) {
+      state = [
+        for (final item in state)
+          if (item.product.id == product.id)
+            CartItem(product: item.product, quantity: item.quantity + 1)
+          else
+            item
+      ];
     } else {
-      state = [...state, CartItem(product: product)];
+      state = [...state, existingItem];
     }
   }
 
-  void updateQuantity(String productId, int quantity) {
+  void removeFromCart(int productId) {
+    state = state.where((item) => item.product.id != productId).toList();
+  }
+
+  void updateQuantity(int productId, int quantity) {
     if (quantity <= 0) {
-      state = state.where((item) => item.product.id != productId).toList();
+      removeFromCart(productId);
     } else {
-      final updatedItems = [...state];
-      final index = updatedItems.indexWhere((item) => item.product.id == productId);
-      updatedItems[index] = CartItem(
-        product: updatedItems[index].product,
-        quantity: quantity,
-      );
-      state = updatedItems;
+      state = [
+        for (final item in state)
+          if (item.product.id == productId)
+            CartItem(product: item.product, quantity: quantity)
+          else
+            item
+      ];
     }
   }
 
-  void clearCart() {
-    state = [];
+  double get totalPrice {
+    return state.fold(
+      0,
+          (sum, item) => sum + (item.product.price * item.quantity),
+    );
   }
 }
-
-final cartProvider = StateNotifierProvider<CartNotifier, List<CartItem>>(
-      (ref) => CartNotifier(),
-);
