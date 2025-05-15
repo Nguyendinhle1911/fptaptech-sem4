@@ -1,0 +1,26 @@
+[
+  {
+    "id": "1",
+    "name": "Áo thun nam",
+    "price": 15.99,
+    "imageUrl": "https://authentic-shoes.com/wp-content/uploads/2023/11/4f55f48d-9fd7-4f1f-9ad4-e61eb532-768x768.png"
+  },
+  {
+    "id": "2",
+    "name": "Quần jeans nữ",
+    "price": 29.99,
+    "imageUrl": "https://cdn.dafc.com.vn/catalog/product/dafc/1194504_000_66cc2f250223c.jpg"
+  },
+  {
+    "id": "3",
+    "name": "Giày thể thao nike",
+    "price": 49.99,
+    "imageUrl": "https://sneakerdaily.vn/wp-content/uploads/2023/08/Off-White-x-Air-Jordan-1-Retro-High-OG-Chicago-AA3834-101.jpg.webp"
+  },
+  {
+    "id": "4",
+    "name": "Túi xách thời trang",
+    "price": 35.99,
+    "imageUrl": "https://cdnphoto.dantri.com.vn/bRN89eenAkhusyBS3RZXgHhZjsc=/thumb_w/1360/2023/09/14/tuixachdatnhatthegioi9-1694677632378.jpg"
+  }
+]
