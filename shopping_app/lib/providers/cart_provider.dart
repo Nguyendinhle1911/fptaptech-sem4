@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:shopping_app/models/cart_item.dart';
-import 'package:shopping_app/models/product.dart';
+import '../models/cart_item.dart';
+import '../models/product.dart';
 
 final cartProvider = StateNotifierProvider<CartNotifier, List<CartItem>>((ref) {
   return CartNotifier();
@@ -10,40 +10,42 @@ class CartNotifier extends StateNotifier<List<CartItem>> {
   CartNotifier() : super([]);
 
   void addToCart(Product product) {
-    final existingItem = state.firstWhere(
-          (item) => item.product.id == product.id,
-      orElse: () => CartItem(product: product),
-    );
+    if (product == null) return; // Kiểm tra product không null
+    final existingItemIndex = state.indexWhere((item) => item.product.id == product.id);
 
-    if (state.contains(existingItem)) {
+    if (existingItemIndex != -1) {
       state = [
-        for (final item in state)
-          if (item.product.id == product.id)
-            CartItem(product: item.product, quantity: item.quantity + 1)
+        for (int i = 0; i < state.length; i++)
+          if (i == existingItemIndex)
+            CartItem(product: state[i].product, quantity: state[i].quantity + 1)
           else
-            item
+            state[i]
       ];
     } else {
-      state = [...state, existingItem];
+      state = [...state, CartItem(product: product, quantity: 1)];
     }
   }
 
-  void removeFromCart(int productId) {
-    state = state.where((item) => item.product.id != productId).toList();
+  void removeFromCart(CartItem cartItem) {
+    state = state.where((item) => item != cartItem).toList();
   }
 
-  void updateQuantity(int productId, int quantity) {
+  void updateQuantity(CartItem cartItem, int quantity) {
     if (quantity <= 0) {
-      removeFromCart(productId);
+      removeFromCart(cartItem);
     } else {
       state = [
         for (final item in state)
-          if (item.product.id == productId)
+          if (item == cartItem)
             CartItem(product: item.product, quantity: quantity)
           else
             item
       ];
     }
+  }
+
+  void clearCart() {
+    state = [];
   }
 
   double get totalPrice {

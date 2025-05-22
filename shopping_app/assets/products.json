@@ -1,202 +1,552 @@
 [
   {
     "id": 1,
-    "name": "Áo Thun Nam",
-    "category": "Thời Trang",
-    "description": "Áo thun cotton thoáng mát, phù hợp mặc hàng ngày.",
-    "price": 200000,
-    "imageUrl": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab",
-    "importDate": "2025-01-10",
-    "details": "Chất liệu: 100% cotton. Kích cỡ: S, M, L, XL."
+    "name": "Túi xách Louis Vuitton",
+    "description": "Túi xách cao cấp, chất liệu da thật.",
+    "details": "Kích thước: 30x20x10 cm, màu đen.",
+    "price": 1000000,
+    "category": "Túi xách",
+    "importDate": "2025-05-01",
+    "imageUrl": "https://tamanh.net/wp-content/uploads/2021/03/tui-xach-nam-TTA917405104-D-1-570x712.jpg",
+    "seller": {
+      "avatarUrl": "https://i.pravatar.cc/50?img=1",
+      "name": "Shop Online",
+      "postTime": "2025-05-19 09:00"
+    },
+    "comments": [
+      {
+        "id": 1,
+        "avatarUrl": "https://i.pravatar.cc/50?img=2",
+        "name": "Nguyen Van A",
+        "content": "Sản phẩm đẹp, giao hàng nhanh!",
+        "time": "2025-05-19 09:30",
+        "liked": false,
+        "likeCount": 5
+      },
+      {
+        "id": 2,
+        "avatarUrl": "https://i.pravatar.cc/50?img=3",
+        "name": "Tran Thi B",
+        "content": "Giá hợp lý, sẽ mua thêm!",
+        "time": "2025-05-19 10:00",
+        "liked": false,
+        "likeCount": 3
+      },
+      {
+        "id": 3,
+        "avatarUrl": "https://i.pravatar.cc/50?img=4",
+        "name": "Le Van C",
+        "content": "Túi xách rất sang trọng, đáng tiền!",
+        "time": "2025-05-19 10:30",
+        "liked": true,
+        "likeCount": 7
+      },
+      {
+        "id": 4,
+        "avatarUrl": "https://i.pravatar.cc/50?img=5",
+        "name": "Pham Thi D",
+        "content": "Chất liệu tốt, rất hài lòng!",
+        "time": "2025-05-19 11:00",
+        "liked": false,
+        "likeCount": 4
+      },
+      {
+        "id": 5,
+        "avatarUrl": "https://i.pravatar.cc/50?img=6",
+        "name": "Hoang Van E",
+        "content": "Hàng đẹp, đóng gói cẩn thận!",
+        "time": "2025-05-19 11:30",
+        "liked": true,
+        "likeCount": 6
+      },
+      {
+        "id": 6,
+        "avatarUrl": "https://i.pravatar.cc/50?img=7",
+        "name": "Nguyen Thi F",
+        "content": "Shop tư vấn nhiệt tình, túi xách rất đẹp!",
+        "time": "2025-05-19 12:00",
+        "liked": false,
+        "likeCount": 2
+      },
+      {
+        "id": 7,
+        "avatarUrl": "https://i.pravatar.cc/50?img=8",
+        "name": "Tran Van G",
+        "content": "Mua lần thứ 2, vẫn ưng ý như lần đầu!",
+        "time": "2025-05-19 12:30",
+        "liked": true,
+        "likeCount": 8
+      }
+    ]
   },
   {
     "id": 2,
-    "name": "Quần Jeans",
-    "category": "Thời Trang",
-    "description": "Quần jeans phong cách, bền đẹp.",
-    "price": 500000,
-    "imageUrl": "https://images.unsplash.com/photo-1542272604-787c3835535d",
-    "importDate": "2025-02-15",
-    "details": "Chất liệu: Denim. Kích cỡ: 28-34."
+    "name": "Áo thun nam",
+    "description": "Áo thun cotton, thoải mái khi mặc.",
+    "details": "Size M, màu xanh dương.",
+    "price": 200000,
+    "category": "Quần áo",
+    "importDate": "2025-05-02",
+    "imageUrl": "https://studiovietnam.com/wp-content/uploads/2022/12/mau-anh-chup-ao-thun-nam-21.jpg",
+    "seller": {
+      "avatarUrl": "https://i.pravatar.cc/50?img=9",
+      "name": "Shop 24/7",
+      "postTime": "2025-05-18 15:00"
+    },
+    "comments": [
+      {
+        "id": 1,
+        "avatarUrl": "https://i.pravatar.cc/50?img=10",
+        "name": "Le Van C",
+        "content": "Chất vải tốt, ưng lắm!",
+        "time": "2025-05-18 16:00",
+        "liked": false,
+        "likeCount": 8
+      },
+      {
+        "id": 2,
+        "avatarUrl": "https://i.pravatar.cc/50?img=11",
+        "name": "Pham Thi D",
+        "content": "Màu sắc đẹp, mặc rất thoải mái!",
+        "time": "2025-05-18 16:30",
+        "liked": true,
+        "likeCount": 5
+      },
+      {
+        "id": 3,
+        "avatarUrl": "https://i.pravatar.cc/50?img=12",
+        "name": "Hoang Van E",
+        "content": "Áo thun này mặc mát, rất thích!",
+        "time": "2025-05-18 17:00",
+        "liked": false,
+        "likeCount": 3
+      },
+      {
+        "id": 4,
+        "avatarUrl": "https://i.pravatar.cc/50?img=13",
+        "name": "Nguyen Thi F",
+        "content": "Shop giao hàng nhanh, áo đẹp!",
+        "time": "2025-05-18 17:30",
+        "liked": true,
+        "likeCount": 6
+      },
+      {
+        "id": 5,
+        "avatarUrl": "https://i.pravatar.cc/50?img=14",
+        "name": "Tran Van G",
+        "content": "Giá rẻ mà chất lượng tốt, recommend!",
+        "time": "2025-05-18 18:00",
+        "liked": false,
+        "likeCount": 4
+      },
+      {
+        "id": 6,
+        "avatarUrl": "https://i.pravatar.cc/50?img=15",
+        "name": "Le Thi H",
+        "content": "Áo mặc vừa người, rất ưng ý!",
+        "time": "2025-05-18 18:30",
+        "liked": true,
+        "likeCount": 7
+      }
+    ]
   },
   {
     "id": 3,
-    "name": "Áo Sơ Mi Nữ",
-    "category": "Thời Trang",
-    "description": "Áo sơ mi lụa mềm mại, phù hợp công sở hoặc sự kiện.",
+    "name": "Quần jeans nữ",
+    "description": "Quần jeans ống suông, thời trang.",
+    "details": "Size S, màu xanh đậm.",
     "price": 350000,
-    "imageUrl": "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f",
-    "importDate": "2025-03-01",
-    "details": "Chất liệu: Lụa tổng hợp. Kích cỡ: XS, S, M, L."
+    "category": "Quần áo",
+    "importDate": "2025-05-03",
+    "imageUrl": "https://dytbw3ui6vsu6.cloudfront.net/media/catalog/product/resize/780x780/S/a/Sandro_SFPJE00518-4785_V_1_1_2.webp",
+    "seller": {
+      "avatarUrl": "https://i.pravatar.cc/50?img=16",
+      "name": "Shop Fashion",
+      "postTime": "2025-05-17 12:00"
+    },
+    "comments": [
+      {
+        "id": 1,
+        "avatarUrl": "https://i.pravatar.cc/50?img=17",
+        "name": "Pham Thi D",
+        "content": "Đẹp, đúng size!",
+        "time": "2025-05-17 13:00",
+        "liked": false,
+        "likeCount": 4
+      },
+      {
+        "id": 2,
+        "avatarUrl": "https://i.pravatar.cc/50?img=18",
+        "name": "Hoang Van E",
+        "content": "Quần jeans này mặc đẹp, rất thời trang!",
+        "time": "2025-05-17 13:30",
+        "liked": true,
+        "likeCount": 6
+      },
+      {
+        "id": 3,
+        "avatarUrl": "https://i.pravatar.cc/50?img=19",
+        "name": "Nguyen Thi F",
+        "content": "Chất vải tốt, đáng tiền!",
+        "time": "2025-05-17 14:00",
+        "liked": false,
+        "likeCount": 5
+      },
+      {
+        "id": 4,
+        "avatarUrl": "https://i.pravatar.cc/50?img=20",
+        "name": "Tran Van G",
+        "content": "Shop giao hàng nhanh, quần đẹp lắm!",
+        "time": "2025-05-17 14:30",
+        "liked": true,
+        "likeCount": 7
+      },
+      {
+        "id": 5,
+        "avatarUrl": "https://i.pravatar.cc/50?img=21",
+        "name": "Le Thi H",
+        "content": "Màu sắc đúng như hình, rất ưng!",
+        "time": "2025-05-17 15:00",
+        "liked": false,
+        "likeCount": 3
+      },
+      {
+        "id": 6,
+        "avatarUrl": "https://i.pravatar.cc/50?img=22",
+        "name": "Nguyen Van I",
+        "content": "Quần jeans này hợp style mình, thích lắm!",
+        "time": "2025-05-17 15:30",
+        "liked": true,
+        "likeCount": 8
+      },
+      {
+        "id": 7,
+        "avatarUrl": "https://i.pravatar.cc/50?img=23",
+        "name": "Tran Thi K",
+        "content": "Mua cho bạn gái, cô ấy rất thích!",
+        "time": "2025-05-17 16:00",
+        "liked": false,
+        "likeCount": 4
+      }
+    ]
+  }, {
+    "id": 21,
+    "name": "Túi xách thời trang",
+    "description": "Túi xách phong cách hiện đại, phù hợp mọi dịp.",
+    "details": "Kích thước: 25x15x8 cm, màu trắng.",
+    "price": 800000,
+    "category": "Túi xách",
+    "importDate": "2025-05-19",
+    "imageUrl": "https://down-vn.img.susercontent.com/file/vn-11134201-7qukw-lescmnup06dz29",
+    "seller": {
+      "avatarUrl": "https://i.pravatar.cc/50?img=24",
+      "name": "Luxury Shop",
+      "postTime": "2025-05-19 14:00"
+    },
+    "comments": [
+      {
+        "id": 1,
+        "avatarUrl": "https://i.pravatar.cc/50?img=25",
+        "name": "Nguyen Thi M",
+        "content": "Túi xách đẹp, đúng như mô tả!",
+        "time": "2025-05-19 14:30",
+        "liked": true,
+        "likeCount": 9
+      },
+      {
+        "id": 2,
+        "avatarUrl": "https://i.pravatar.cc/50?img=26",
+        "name": "Tran Van N",
+        "content": "Thiết kế sang trọng, rất thích!",
+        "time": "2025-05-19 15:00",
+        "liked": false,
+        "likeCount": 6
+      },
+      {
+        "id": 3,
+        "avatarUrl": "https://i.pravatar.cc/50?img=27",
+        "name": "Le Thi O",
+        "content": "Giao hàng nhanh, túi đẹp lắm!",
+        "time": "2025-05-19 15:30",
+        "liked": true,
+        "likeCount": 7
+      },
+      {
+        "id": 4,
+        "avatarUrl": "https://i.pravatar.cc/50?img=28",
+        "name": "Pham Van P",
+        "content": "Chất liệu tốt, giá hợp lý!",
+        "time": "2025-05-19 16:00",
+        "liked": false,
+        "likeCount": 4
+      },
+      {
+        "id": 5,
+        "avatarUrl": "https://i.pravatar.cc/50?img=29",
+        "name": "Hoang Thi Q",
+        "content": "Túi xách này dùng tiện lắm, recommend!",
+        "time": "2025-05-19 16:30",
+        "liked": true,
+        "likeCount": 8
+      },
+      {
+        "id": 6,
+        "avatarUrl": "https://i.pravatar.cc/50?img=30",
+        "name": "Nguyen Van R",
+        "content": "Mua tặng vợ, cô ấy rất thích!",
+        "time": "2025-05-19 17:00",
+        "liked": false,
+        "likeCount": 5
+      },
+      {
+        "id": 7,
+        "avatarUrl": "https://i.pravatar.cc/50?img=31",
+        "name": "Tran Thi S",
+        "content": "Túi xách đẹp, rất hài lòng!",
+        "time": "2025-05-19 17:30",
+        "liked": true,
+        "likeCount": 6
+      }
+    ]
   },
   {
-    "id": 4,
-    "name": "Váy Maxi",
-    "category": "Thời Trang",
-    "description": "Váy maxi dài nhẹ nhàng, thích hợp đi biển hoặc dạo phố.",
-    "price": 450000,
-    "imageUrl": "https://images.unsplash.com/photo-1519235106719-06bab4573b45",
-    "importDate": "2025-03-05",
-    "details": "Chất liệu: Chiffon. Kích cỡ: S, M, L."
+    "id": 22,
+    "name": "Áo thun nam phong cách",
+    "description": "Áo thun nam năng động, chất liệu cotton.",
+    "details": "Size L, màu xám.",
+    "price": 250000,
+    "category": "Quần áo",
+    "importDate": "2025-05-19",
+    "imageUrl": "https://studiovietnam.com/wp-content/uploads/2022/12/mau-anh-chup-ao-thun-nam-21.jpg",
+    "seller": {
+      "avatarUrl": "https://i.pravatar.cc/50?img=32",
+      "name": "Trendy Store",
+      "postTime": "2025-05-19 13:00"
+    },
+    "comments": [
+      {
+        "id": 1,
+        "avatarUrl": "https://i.pravatar.cc/50?img=33",
+        "name": "Nguyen Van T",
+        "content": "Áo mặc thoải mái, chất vải tốt!",
+        "time": "2025-05-19 13:30",
+        "liked": true,
+        "likeCount": 7
+      },
+      {
+        "id": 2,
+        "avatarUrl": "https://i.pravatar.cc/50?img=34",
+        "name": "Tran Thi U",
+        "content": "Màu xám đẹp, rất hợp style!",
+        "time": "2025-05-19 14:00",
+        "liked": false,
+        "likeCount": 4
+      },
+      {
+        "id": 3,
+        "avatarUrl": "https://i.pravatar.cc/50?img=35",
+        "name": "Le Van V",
+        "content": "Shop giao hàng nhanh, áo đẹp lắm!",
+        "time": "2025-05-19 14:30",
+        "liked": true,
+        "likeCount": 6
+      },
+      {
+        "id": 4,
+        "avatarUrl": "https://i.pravatar.cc/50?img=36",
+        "name": "Pham Thi W",
+        "content": "Áo thun này mặc mát, rất thích!",
+        "time": "2025-05-19 15:00",
+        "liked": false,
+        "likeCount": 3
+      },
+      {
+        "id": 5,
+        "avatarUrl": "https://i.pravatar.cc/50?img=37",
+        "name": "Hoang Van X",
+        "content": "Giá rẻ, chất lượng tốt, sẽ mua thêm!",
+        "time": "2025-05-19 15:30",
+        "liked": true,
+        "likeCount": 8
+      },
+      {
+        "id": 6,
+        "avatarUrl": "https://i.pravatar.cc/50?img=38",
+        "name": "Nguyen Thi Y",
+        "content": "Áo thun đẹp, rất hài lòng!",
+        "time": "2025-05-19 16:00",
+        "liked": false,
+        "likeCount": 5
+      },
+      {
+        "id": 7,
+        "avatarUrl": "https://i.pravatar.cc/50?img=39",
+        "name": "Tran Van Z",
+        "content": "Mua lần thứ 2, vẫn ưng ý!",
+        "time": "2025-05-19 16:30",
+        "liked": true,
+        "likeCount": 9
+      }
+    ]
   },
   {
-    "id": 5,
-    "name": "Áo Khoác Hoodie",
-    "category": "Thời Trang",
-    "description": "Áo hoodie ấm áp, phong cách năng động.",
+    "id": 23,
+    "name": "Quần jeans nữ cá tính",
+    "description": "Quần jeans rách gối, phong cách boyfriend.",
+    "details": "Size M, màu xanh nhạt.",
     "price": 400000,
-    "imageUrl": "https://images.unsplash.com/photo-1503341504253-dff4815485f1",
-    "importDate": "2025-03-10",
-    "details": "Chất liệu: Nỉ bông. Kích cỡ: M, L, XL."
+    "category": "Quần áo",
+    "importDate": "2025-05-19",
+    "imageUrl": "https://aaajeans.com/wp-content/uploads/2019/10/Quan-jean-nu-boyfriend-rach-silver-blue-BFACRRNZC_SVE-1.jpg",
+    "seller": {
+      "avatarUrl": "https://i.pravatar.cc/50?img=40",
+      "name": "Jeans Hub",
+      "postTime": "2025-05-19 11:00"
+    },
+    "comments": [
+      {
+        "id": 1,
+        "avatarUrl": "https://i.pravatar.cc/50?img=41",
+        "name": "Nguyen Thi A1",
+        "content": "Quần jeans đẹp, rất cá tính!",
+        "time": "2025-05-19 11:30",
+        "liked": true,
+        "likeCount": 8
+      },
+      {
+        "id": 2,
+        "avatarUrl": "https://i.pravatar.cc/50?img=42",
+        "name": "Tran Van B1",
+        "content": "Mặc lên form đẹp, rất thích!",
+        "time": "2025-05-19 12:00",
+        "liked": false,
+        "likeCount": 5
+      },
+      {
+        "id": 3,
+        "avatarUrl": "https://i.pravatar.cc/50?img=43",
+        "name": "Le Thi C1",
+        "content": "Chất vải tốt, shop tư vấn nhiệt tình!",
+        "time": "2025-05-19 12:30",
+        "liked": true,
+        "likeCount": 7
+      },
+      {
+        "id": 4,
+        "avatarUrl": "https://i.pravatar.cc/50?img=44",
+        "name": "Pham Van D1",
+        "content": "Quần jeans này hợp style mình, recommend!",
+        "time": "2025-05-19 13:00",
+        "liked": false,
+        "likeCount": 4
+      },
+      {
+        "id": 5,
+        "avatarUrl": "https://i.pravatar.cc/50?img=45",
+        "name": "Hoang Thi E1",
+        "content": "Giao hàng nhanh, quần đẹp lắm!",
+        "time": "2025-05-19 13:30",
+        "liked": true,
+        "likeCount": 6
+      },
+      {
+        "id": 6,
+        "avatarUrl": "https://i.pravatar.cc/50?img=46",
+        "name": "Nguyen Van F1",
+        "content": "Màu sắc đúng như hình, rất ưng!",
+        "time": "2025-05-19 14:00",
+        "liked": false,
+        "likeCount": 3
+      },
+      {
+        "id": 7,
+        "avatarUrl": "https://i.pravatar.cc/50?img=47",
+        "name": "Tran Thi G1",
+        "content": "Quần jeans đẹp, rất hài lòng!",
+        "time": "2025-05-19 14:30",
+        "liked": true,
+        "likeCount": 9
+      }
+    ]
   },
   {
-    "id": 6,
-    "name": "Giày Sneaker Nữ",
-    "category": "Giày Dép",
-    "description": "Giày sneaker thời thượng, êm ái, dễ phối đồ.",
-    "price": 700000,
-    "imageUrl": "https://images.unsplash.com/photo-1491553895911-0055eca6402d",
-    "importDate": "2025-03-15",
-    "details": "Chất liệu: Da tổng hợp. Kích cỡ: 36-39."
-  },
-  {
-    "id": 7,
-    "name": "Sandal Cao Gót",
-    "category": "Giày Dép",
-    "description": "Sandal cao gót thanh lịch, phù hợp dự tiệc.",
-    "price": 550000,
-    "imageUrl": "https://images.unsplash.com/photo-1515347619252-60a4bf4d2394",
-    "importDate": "2025-03-20",
-    "details": "Chất liệu: Da PU. Gót: 7cm. Kích cỡ: 35-38."
-  },
-  {
-    "id": 8,
-    "name": "Giày Thể Thao Nam",
-    "category": "Giày Dép",
-    "description": "Giày thể thao bền bỉ, hỗ trợ vận động mạnh.",
-    "price": 850000,
-    "imageUrl": "https://images.unsplash.com/photo-1542291026-7eec264c27ff",
-    "importDate": "2025-03-25",
-    "details": "Chất liệu: Vải lưới và cao su. Kích cỡ: 40-44."
-  },
-  {
-    "id": 9,
-    "name": "Điện Thoại Thông Minh",
-    "category": "Điện Tử",
-    "description": "Smartphone hiện đại với camera sắc nét, hiệu năng mạnh.",
-    "price": 10000000,
-    "imageUrl": "https://images.unsplash.com/photo-1511707171634-5f89772885ad",
-    "importDate": "2025-04-01",
-    "details": "Màn hình: 6.5 inch AMOLED. RAM: 8GB. Bộ nhớ: 128GB."
-  },
-  {
-    "id": 10,
-    "name": "Tai Nghe Không Dây",
-    "category": "Điện Tử",
-    "description": "Tai nghe true wireless, âm thanh chất lượng cao.",
-    "price": 1500000,
-    "imageUrl": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e",
-    "importDate": "2025-04-05",
-    "details": "Pin: 20 giờ. Công nghệ: Bluetooth 5.0. Chống ồn."
-  },
-  {
-    "id": 11,
-    "name": "Máy Tính Bảng",
-    "category": "Điện Tử",
-    "description": "Tablet nhẹ, tiện lợi cho học tập và giải trí.",
-    "price": 7000000,
-    "imageUrl": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3",
-    "importDate": "2025-04-10",
-    "details": "Màn hình: 10.1 inch. RAM: 4GB. Bộ nhớ: 64GB."
-  },
-  {
-    "id": 12,
-    "name": "Loa Bluetooth",
-    "category": "Điện Tử",
-    "description": "Loa không dây di động, âm thanh sống động.",
+    "id": 24,
+    "name": "Chai nước hoa cao cấp",
+    "description": "Nước hoa hương thơm quyến rũ, lưu hương lâu.",
+    "details": "Dung tích: 50ml, mùi hương hoa cỏ.",
     "price": 1200000,
-    "imageUrl": "https://images.unsplash.com/photo-1605648916361-9d936d4369b9",
-    "importDate": "2025-04-15",
-    "details": "Pin: 12 giờ. Công suất: 20W. Chống nước: IPX7."
-  },
-  {
-    "id": 13,
-    "name": "Son Môi Lì",
-    "category": "Mỹ Phẩm",
-    "description": "Son lì lâu trôi, màu sắc nổi bật, dưỡng môi nhẹ.",
-    "price": 350000,
-    "imageUrl": "https://images.unsplash.com/photo-1583331695686-8e7d897a03e2",
-    "importDate": "2025-04-20",
-    "details": "Chất liệu: Son lì dưỡng ẩm. Màu: Đỏ cam, hồng phấn."
-  },
-  {
-    "id": 14,
-    "name": "Son Dưỡng Có Màu",
-    "category": "Mỹ Phẩm",
-    "description": "Son dưỡng môi tự nhiên, lên màu nhẹ nhàng.",
-    "price": 250000,
-    "imageUrl": "https://images.unsplash.com/photo-1613336026275-74a5c781ed5d",
-    "importDate": "2025-04-25",
-    "details": "Chất liệu: Dưỡng môi organic. Màu: Hồng đào, đỏ nhạt."
-  },
-  {
-    "id": 15,
-    "name": "Nồi Chiên Không Dầu",
-    "category": "Nồi Chảo",
-    "description": "Nồi chiên không dầu tiện lợi, nấu ăn lành mạnh.",
-    "price": 2000000,
-    "imageUrl": "https://images.unsplash.com/photo-1620713056930-00399b5a2b9b",
-    "importDate": "2025-05-01",
-    "details": "Dung tích: 5L. Công suất: 1500W. Chất liệu: Nhựa ABS."
-  },
-  {
-    "id": 16,
-    "name": "Chảo Chống Dính",
-    "category": "Nồi Chảo",
-    "description": "Chảo chống dính cao cấp, dễ vệ sinh.",
-    "price": 450000,
-    "imageUrl": "https://images.unsplash.com/photo-1620803463748-7e5ea47f1b7f",
-    "importDate": "2025-05-05",
-    "details": "Đường kính: 28cm. Chất liệu: Nhôm phủ ceramic."
-  },
-  {
-    "id": 17,
-    "name": "Dao Bếp Đa Năng",
-    "category": "Dao",
-    "description": "Dao bếp sắc bén, phù hợp cắt thái nhiều loại thực phẩm.",
-    "price": 300000,
-    "imageUrl": "https://images.unsplash.com/photo-1586861352227-9e5e1f996b9a",
-    "importDate": "2025-05-10",
-    "details": "Chất liệu: Thép không gỉ. Chiều dài lưỡi: 20cm."
-  },
-  {
-    "id": 18,
-    "name": "Dao Gọt Trái Cây",
-    "category": "Dao",
-    "description": "Dao gọt nhỏ gọn, lý tưởng cho hoa quả và rau củ.",
-    "price": 150000,
-    "imageUrl": "https://images.unsplash.com/photo-1600586352387-6677e13e43d9",
-    "importDate": "2025-05-12",
-    "details": "Chất liệu: Thép không gỉ. Chiều dài lưỡi: 10cm."
-  },
-  {
-    "id": 19,
-    "name": "Thớt Gỗ Cao Cấp",
-    "category": "Thớt",
-    "description": "Thớt gỗ tự nhiên, bền, thân thiện với lưỡi dao.",
-    "price": 250000,
-    "imageUrl": "https://images.unsplash.com/photo-1600586352387-6677e13e43d9",
-    "importDate": "2025-05-15",
-    "details": "Chất liệu: Gỗ óc chó. Kích thước: 40x25cm."
-  },
-  {
-    "id": 20,
-    "name": "Thớt Nhựa An Toàn",
-    "category": "Thớt",
-    "description": "Thớt nhựa nhẹ, dễ vệ sinh, phù hợp cho bếp nhỏ.",
-    "price": 150000,
-    "imageUrl": "https://images.unsplash.com/photo-1600586352387-6677e13e43d9",
-    "importDate": "2025-05-15",
-    "details": "Chất liệu: Nhựa PP cao cấp. Kích thước: 35x20cm."
+    "category": "Phụ kiện",
+    "importDate": "2025-05-19",
+    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgd9gAvLP5lxwuJNA9h8jiBX-BQo4DlMh59Q&s",
+    "seller": {
+      "avatarUrl": "https://i.pravatar.cc/50?img=48",
+      "name": "Perfume Store",
+      "postTime": "2025-05-19 10:00"
+    },
+    "comments": [
+      {
+        "id": 1,
+        "avatarUrl": "https://i.pravatar.cc/50?img=49",
+        "name": "Nguyen Van H1",
+        "content": "Hương thơm rất quyến rũ, lưu hương lâu!",
+        "time": "2025-05-19 10:30",
+        "liked": true,
+        "likeCount": 9
+      },
+      {
+        "id": 2,
+        "avatarUrl": "https://i.pravatar.cc/50?img=50",
+        "name": "Tran Thi I1",
+        "content": "Nước hoa này dùng thích lắm, sẽ mua thêm!",
+        "time": "2025-05-19 11:00",
+        "liked": false,
+        "likeCount": 6
+      },
+      {
+        "id": 3,
+        "avatarUrl": "https://i.pravatar.cc/50?img=51",
+        "name": "Le Van J1",
+        "content": "Mùi hương sang trọng, rất đáng tiền!",
+        "time": "2025-05-19 11:30",
+        "liked": true,
+        "likeCount": 7
+      },
+      {
+        "id": 4,
+        "avatarUrl": "https://i.pravatar.cc/50?img=52",
+        "name": "Pham Thi K1",
+        "content": "Shop đóng gói cẩn thận, nước hoa chính hãng!",
+        "time": "2025-05-19 12:00",
+        "liked": false,
+        "likeCount": 5
+      },
+      {
+        "id": 5,
+        "avatarUrl": "https://i.pravatar.cc/50?img=53",
+        "name": "Hoang Van L1",
+        "content": "Hương thơm nhẹ nhàng, rất hợp với mình!",
+        "time": "2025-05-19 12:30",
+        "liked": true,
+        "likeCount": 8
+      },
+      {
+        "id": 6,
+        "avatarUrl": "https://i.pravatar.cc/50?img=54",
+        "name": "Nguyen Thi M1",
+        "content": "Nước hoa đẹp, rất hài lòng!",
+        "time": "2025-05-19 13:00",
+        "liked": false,
+        "likeCount": 4
+      },
+      {
+        "id": 7,
+        "avatarUrl": "https://i.pravatar.cc/50?img=55",
+        "name": "Tran Van N1",
+        "content": "Mua tặng bạn gái, cô ấy rất thích!",
+        "time": "2025-05-19 13:30",
+        "liked": true,
+        "likeCount": 6
+      }
+    ]
   }
 ]
